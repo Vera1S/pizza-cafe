@@ -8,11 +8,11 @@ import lombok.NoArgsConstructor;
 //Название пиццы согласно ингридиентам
 
 @Entity
-@Table(name = "namePizza")
+@Table(name = "pizza")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class NamePizza {
+public class Pizza {
 
     @Id
     @Column(name = "id")
@@ -28,7 +28,7 @@ public class NamePizza {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "size")
-    private SizeEntity size;
+    private SizeItem sizeItem;
 
 
 }

@@ -1,16 +1,17 @@
 package com.vera1s.pizzacafe.service;
 
 import com.vera1s.pizzacafe.entity.MenuCafe;
-import com.vera1s.pizzacafe.entity.NamePizza;
-import com.vera1s.pizzacafe.entity.SizeEntity;
+import com.vera1s.pizzacafe.entity.Pizza;
+import com.vera1s.pizzacafe.entity.SizeItem;
+import com.vera1s.pizzacafe.service.impl.PriceMenuServiceImpl;
 
 /**
  * Класс для создания заказа - карзина
  */
 public class BasketItemService extends MenuCafe {
 
-    public BasketItemService(int id, NamePizza namePizza, SizeEntity size, int quantity,
-                             PriceMenu priceMenu){
+    public BasketItemService(int id, Pizza pizza, SizeItem size, int quantity,
+                             PriceMenuServiceImpl priceMenuServiceImpl){
 
 
     }

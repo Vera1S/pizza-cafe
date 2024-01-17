@@ -29,7 +29,7 @@ public class MenuCafe {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "size")
-    private SizeEntity size;
+    private SizeItem sizeItem;
 
     @Column(name = "price")
     private double price;

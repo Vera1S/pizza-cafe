@@ -1,6 +1,6 @@
 package com.vera1s.pizzacafe.service;
 
-import com.vera1s.pizzacafe.entity.SizeEntity;
+import com.vera1s.pizzacafe.entity.SizeItem;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,7 +25,7 @@ public class OrderService {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "size")
-    private SizeEntity size;
+    private SizeItem size;
 
     @Column(name = "price")
     private double price;

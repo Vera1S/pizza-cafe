@@ -1,6 +1,6 @@
 package com.vera1s.pizzacafe.entity;
 
-public enum SizeEntity {
+public enum SizeItem {
     LARGE,
     MEDIUM,
     SMALL
