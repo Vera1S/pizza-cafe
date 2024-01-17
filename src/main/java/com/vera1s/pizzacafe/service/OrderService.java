@@ -1,20 +1,17 @@
-package com.vera1s.pizzacafe.entity;
+package com.vera1s.pizzacafe.service;
 
+import com.vera1s.pizzacafe.entity.SizeEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-/**
- * Здесь будет видно название пиццы и других блюд, напитков, размер блюда, цена
- */
-
 
 @Entity
-@Table(name = "menuCafe")
+@Table(name = "order")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class MenuCafe {
+public class OrderService {
 
     @Id
     @Column(name = "id")
@@ -23,9 +20,8 @@ public class MenuCafe {
     @Column(name = "name")
     private String nameDishes;
 
-   //@Enumerated(EnumType.STRING)
-   //@Column(name = "ingredientsForPizza")
-   //private IngredientsForPizza ingredients;
+    @Column(name = "quantity")
+    private int quantity;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "size")
@@ -33,7 +29,4 @@ public class MenuCafe {
 
     @Column(name = "price")
     private double price;
-
-
-
 }

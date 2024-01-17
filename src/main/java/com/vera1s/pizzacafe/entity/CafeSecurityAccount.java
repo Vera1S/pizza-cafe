@@ -1,5 +1,5 @@
 package com.vera1s.pizzacafe.entity;
 
-public class CookingPizza {
+public class CafeSecurityAccount {
 
 }
