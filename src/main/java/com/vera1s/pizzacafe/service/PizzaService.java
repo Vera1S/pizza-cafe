@@ -2,7 +2,7 @@ package com.vera1s.pizzacafe.service;
 
 import com.vera1s.pizzacafe.entity.Pizza;
 
-public interface PizzaCookingService {
+public interface PizzaService {
 
     Pizza getNewPizza(Integer id);
 

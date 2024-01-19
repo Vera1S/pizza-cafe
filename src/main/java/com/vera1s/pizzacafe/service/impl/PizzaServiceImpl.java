@@ -1,8 +1,10 @@
 package com.vera1s.pizzacafe.service.impl;
 
 import com.vera1s.pizzacafe.entity.Pizza;
+import com.vera1s.pizzacafe.entity.enums.IngredientsForPizza;
+import com.vera1s.pizzacafe.entity.enums.NamePizzaEnum;
 import com.vera1s.pizzacafe.repository.PizzaRepository;
-import com.vera1s.pizzacafe.service.PizzaCookingService;
+import com.vera1s.pizzacafe.service.PizzaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
@@ -13,7 +15,7 @@ import java.util.Optional;
 @Service
 @Primary
 @RequiredArgsConstructor
-public class PizzaServiceImpl implements PizzaCookingService {
+public class PizzaServiceImpl implements PizzaService {
 
     private final PizzaRepository pizzaRepository;
 
@@ -63,4 +65,10 @@ public class PizzaServiceImpl implements PizzaCookingService {
             pizzaRepository.save(persistPerson); //пересохраняем старую pizza
         }
     }
+  // private static Pizza createPizza(Integer id, NamePizzaEnum pizzaEnum, IngredientsForPizza ingredients) {
+
+   //    Integer pizzaId ;
+   //    Pizza pizza = new Pizza(Integer id, pizzaEnum.toString(), ingredients, sizeItem);
+
+   //    return pizza;
 }

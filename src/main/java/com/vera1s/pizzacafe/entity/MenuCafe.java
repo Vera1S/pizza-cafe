@@ -1,5 +1,6 @@
 package com.vera1s.pizzacafe.entity;
 
+import com.vera1s.pizzacafe.entity.enums.SizeItem;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,7 +22,7 @@ public class MenuCafe {
     private Integer id;
 
     @Column(name = "name")
-    private String nameDishes;
+    private String nameDishes;  //только пиццу
 
    //@Enumerated(EnumType.STRING)
    //@Column(name = "ingredientsForPizza")

@@ -2,7 +2,7 @@ package com.vera1s.pizzacafe.service;
 
 import com.vera1s.pizzacafe.entity.MenuCafe;
 import com.vera1s.pizzacafe.entity.Pizza;
-import com.vera1s.pizzacafe.entity.SizeItem;
+import com.vera1s.pizzacafe.entity.enums.SizeItem;
 import com.vera1s.pizzacafe.service.impl.PriceMenuServiceImpl;
 
 /**

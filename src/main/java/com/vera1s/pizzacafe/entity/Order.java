@@ -1,6 +1,6 @@
-package com.vera1s.pizzacafe.service;
+package com.vera1s.pizzacafe.entity;
 
-import com.vera1s.pizzacafe.entity.SizeItem;
+import com.vera1s.pizzacafe.entity.enums.SizeItem;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class OrderService {
+public class Order {
 
     @Id
     @Column(name = "id")

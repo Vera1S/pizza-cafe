@@ -1,4 +1,4 @@
-package com.vera1s.pizzacafe.entity;
+package com.vera1s.pizzacafe.entity.enums;
 
 public enum IngredientsForPizza {
     MUSHROOMS,  //Ctrl + shift + u
