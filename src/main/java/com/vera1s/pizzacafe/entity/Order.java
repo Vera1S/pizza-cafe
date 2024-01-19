@@ -25,7 +25,7 @@ public class Order {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "size")
-    private SizeItem size;
+    private SizeItem sizeItem;
 
     @Column(name = "price")
     private double price;
