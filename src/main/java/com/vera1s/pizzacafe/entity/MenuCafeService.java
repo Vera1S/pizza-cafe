@@ -2,7 +2,6 @@ package com.vera1s.pizzacafe.entity;
 
 import com.vera1s.pizzacafe.entity.enums.NamePizzaEnum;
 import com.vera1s.pizzacafe.entity.enums.SizeItem;
-import com.vera1s.pizzacafe.service.impl.PriceMenuServiceImpl;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,15 +12,18 @@ import lombok.NoArgsConstructor;
 
 
 @Entity
-@Table(name = "menuCafe")
+@Table(name = "menu_Cafe")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class MenuCafe {
+public class MenuCafeService {
 
     @Id
     @Column(name = "id")
     private Integer id;
+
+    // сделать связь с кафе
+    // @OneToOne
 
     @Enumerated(EnumType.STRING)
     @Column(name = "name_Pizza")

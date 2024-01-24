@@ -29,4 +29,9 @@ public class Order {
 
     @Column(name = "price")
     private double price;
+
+    //связь с клиентом @ManyToOne
+    // связь с кафе
+
+    //список заказанного меню
 }

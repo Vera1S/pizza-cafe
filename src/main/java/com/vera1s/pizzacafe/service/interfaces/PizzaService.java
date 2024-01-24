@@ -1,4 +1,5 @@
-package com.vera1s.pizzacafe.service;
+package com.vera1s.pizzacafe.service.interfaces;
+
 
 import com.vera1s.pizzacafe.entity.Pizza;
 

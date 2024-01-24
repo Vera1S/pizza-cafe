@@ -1,23 +1,28 @@
 package com.vera1s.pizzacafe.entity;
 
 import com.vera1s.pizzacafe.entity.enums.CustomerStatus;
+import com.vera1s.pizzacafe.entity.enums.IngredientsForPizza;
+import com.vera1s.pizzacafe.entity.enums.NamePizzaEnum;
+import com.vera1s.pizzacafe.entity.enums.SizeItem;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Time;
+
 @Entity
-@Table(name = "customer")
+@Table(name = "cafe_pizza")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Customer {
+public class Cafe {
 
     @Id
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "name")
+
     private String name;
 
     @Column(name = "email")
@@ -29,8 +34,6 @@ public class Customer {
     @Column(name = "phone")
     private String phone;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "status")
-    private CustomerStatus status;
-
+    @Column(name = "time_status")
+    private Time status;
 }

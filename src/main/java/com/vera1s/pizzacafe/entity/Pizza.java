@@ -25,6 +25,8 @@ public class Pizza {
     @Column(name = "name_pizza")
     private NamePizzaEnum namePizzaEnum;
 
+    //связь с ингридиентами многие ко многим
+
     @Enumerated(EnumType.STRING)
     @Column(name = "ingredients_for_pizza")
     private IngredientsForPizza ingredients;
@@ -33,5 +35,5 @@ public class Pizza {
     @Column(name = "size")
     private SizeItem sizeItem;
 
-
+    //связь с меню многие ко многим
 }

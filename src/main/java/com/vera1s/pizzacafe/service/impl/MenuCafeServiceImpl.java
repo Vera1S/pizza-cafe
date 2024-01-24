@@ -1,21 +1,20 @@
 package com.vera1s.pizzacafe.service.impl;
 
-import com.vera1s.pizzacafe.entity.MenuCafe;
-import com.vera1s.pizzacafe.service.CafeService;
+import com.vera1s.pizzacafe.entity.MenuCafeService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class MenuCafeServiceImpl implements CafeService {
+public class MenuCafeServiceImpl implements com.vera1s.pizzacafe.service.interfaces.MenuCafeService {
 
     @Override
-    public MenuCafe getNameDishes() {
+    public MenuCafeService getNameDishes() {
         return null;
     }
 
     @Override
-    public List<MenuCafe> getNameByDishes(String nameDishes) {
+    public List<MenuCafeService> getNameByDishes(String nameDishes) {
         return null;
     }
 
