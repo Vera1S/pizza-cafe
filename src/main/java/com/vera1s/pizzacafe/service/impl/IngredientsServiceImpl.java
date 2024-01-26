@@ -7,6 +7,9 @@ import com.vera1s.pizzacafe.repository.IngredientsRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class IngredientsServiceImpl {
@@ -14,11 +17,11 @@ public class IngredientsServiceImpl {
     private final IngredientsRepository ingredientsRepository;
 
     public void addIngredientToPizza(Pizza pizza, IngredientsName ingredient) {
+        List<Pizza> ingredientToPizza = new ArrayList<>();
         pizza.getIngredients().add(ingredient);
     }
 
-    // Метод для удаления ингредиента из пиццы
-    public void removeIngredientFromPizza(Pizza pizza, IngredientsForPizza ingredient) {
+        public void removeIngredientFromPizza(Pizza pizza, IngredientsForPizza ingredient) {
         pizza.getIngredients().remove(ingredient);
     }
 }

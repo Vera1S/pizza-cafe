@@ -29,12 +29,8 @@ public class Pizza {
     private NamePizzaEnum namePizzaEnum;
 
     @ManyToMany
-    private IngredientsForPizza ingredients;
-    //связь с ингридиентами многие ко многим
-
-    @ManyToMany
     @JoinTable(
-            name = "pizza_ingredients",
+            name = "pizza_ingredients_name",
             joinColumns = @JoinColumn(name = "pizza_id"),
             inverseJoinColumns = @JoinColumn(name = "ingredient_id"))
     private List<IngredientsName> ingredientsNameList;
