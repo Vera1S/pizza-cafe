@@ -8,6 +8,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 //Название пиццы согласно ингридиентам
 
 @Entity
@@ -18,14 +20,24 @@ import lombok.NoArgsConstructor;
 public class Pizza {
 
     @Id
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "pizza_id")
     private Integer id;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "name_pizza")
     private NamePizzaEnum namePizzaEnum;
 
+    @ManyToMany
+    private IngredientsForPizza ingredients;
     //связь с ингридиентами многие ко многим
+
+    @ManyToMany
+    @JoinTable(
+            name = "pizza_ingredients",
+            joinColumns = @JoinColumn(name = "pizza_id"),
+            inverseJoinColumns = @JoinColumn(name = "ingredient_id"))
+    private List<IngredientsName> ingredientsNameList;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "ingredients_for_pizza")
@@ -35,5 +47,8 @@ public class Pizza {
     @Column(name = "size")
     private SizeItem sizeItem;
 
-    //связь с меню многие ко многим
+    @OneToOne
+    private MenuCafe menuCafe;//связь с меню многие ко многим
+
+
 }

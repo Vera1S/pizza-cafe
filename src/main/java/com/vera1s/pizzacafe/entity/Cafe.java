@@ -19,7 +19,7 @@ import java.sql.Time;
 public class Cafe {
 
     @Id
-    @Column(name = "id")
+    @Column(name = "cafe_id")
     private Integer id;
 
 

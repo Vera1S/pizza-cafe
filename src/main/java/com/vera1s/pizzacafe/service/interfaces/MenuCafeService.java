@@ -1,14 +1,15 @@
 package com.vera1s.pizzacafe.service.interfaces;
 
+import com.vera1s.pizzacafe.entity.MenuCafe;
 import org.springframework.stereotype.Service;
 
 
 import java.util.List;
-@Service
+//@Service
 public interface MenuCafeService {
 
-    com.vera1s.pizzacafe.entity.MenuCafeService getNameDishes();
+    MenuCafe getNameDishes();
 
-    List<com.vera1s.pizzacafe.entity.MenuCafeService> getNameByDishes(String nameDishes);
+    List<MenuCafe> getNameByDishes(String nameDishes);
 
 }

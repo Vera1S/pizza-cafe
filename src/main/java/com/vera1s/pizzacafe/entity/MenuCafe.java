@@ -6,6 +6,9 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
+
 /**
  * Здесь будет видно название пиццы и других блюд, напитков, размер блюда, цена
  */
@@ -16,29 +19,28 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class MenuCafeService {
+public class MenuCafe {
 
     @Id
-    @Column(name = "id")
+    @Column(name = "menu_Cafe_id")
     private Integer id;
 
-    // сделать связь с кафе
-    // @OneToOne
+    @OneToOne
+    private Cafe cafe;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "name_Pizza")
     private NamePizzaEnum namePizzaEnum;  //только пиццу
 
-   //@Enumerated(EnumType.STRING)
-   //@Column(name = "ingredientsForPizza")
-   //private IngredientsForPizza ingredients;
-
-    @Enumerated(EnumType.STRING)
+        @Enumerated(EnumType.STRING)
     @Column(name = "size")
     private SizeItem sizeItem;
 
     @Column(name = "price")
     private double price;
+
+    @ManyToMany(mappedBy = "ingredients")
+    private List<Pizza> pizzas;
 
 
 
