@@ -6,15 +6,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-//@Entity
-@Table(name = "order")
+@Entity
+@Table(name = "basket_item")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Order {
+public class BasketItem {
 
     @Id
-    @Column(name = "id")
+    @Column(name = "basket_id")
     private Integer id;
 
     @Column(name = "name")
@@ -36,7 +36,4 @@ public class Order {
     @OneToOne
     private Cafe cafe;
 
-    //список заказанного меню
-    @OneToOne
-    private BasketItem basketItem;
 }

@@ -7,4 +7,7 @@ public interface IngredientsService {
     IngredientsName getNewIngredients(Integer id);
     IngredientsName getById(Integer id);
     void save(IngredientsName ingredientsName);
+
+    void add(IngredientsName ingredientsName);
+    void remove(IngredientsName ingredientsName);
 }

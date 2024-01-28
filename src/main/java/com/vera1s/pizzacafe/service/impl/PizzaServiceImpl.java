@@ -63,10 +63,4 @@ public class PizzaServiceImpl implements PizzaService {
             pizzaRepository.save(persistPerson); //пересохраняем старую pizza
         }
     }
-    // private static Pizza createPizza(Integer id, NamePizzaEnum pizzaEnum, IngredientsForPizza ingredients) {
-
-    //    Integer pizzaId ;
-    //    Pizza pizza = new Pizza(Integer id, pizzaEnum.toString(), ingredients, sizeItem);
-
-    //    return pizza;
-}
+    }
