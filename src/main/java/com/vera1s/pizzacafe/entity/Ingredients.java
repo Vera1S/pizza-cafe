@@ -13,7 +13,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class IngredientsName {
+public class Ingredients {
 
     @Id
     @Column(name = "ingredients_id")

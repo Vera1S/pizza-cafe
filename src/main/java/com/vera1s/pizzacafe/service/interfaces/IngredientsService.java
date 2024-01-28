@@ -1,13 +1,13 @@
 package com.vera1s.pizzacafe.service.interfaces;
 
-import com.vera1s.pizzacafe.entity.IngredientsName;
+import com.vera1s.pizzacafe.entity.Ingredients;
 
 public interface IngredientsService {
 
-    IngredientsName getNewIngredients(Integer id);
-    IngredientsName getById(Integer id);
-    void save(IngredientsName ingredientsName);
+    Ingredients getNewIngredients(Integer id);
+    Ingredients getById(Integer id);
+    void save(Ingredients ingredients);
 
-    void add(IngredientsName ingredientsName);
-    void remove(IngredientsName ingredientsName);
+    void add(Ingredients ingredients);
+    void remove(Ingredients ingredients);
 }

@@ -1,6 +1,5 @@
 package com.vera1s.pizzacafe.entity;
 
-import com.vera1s.pizzacafe.entity.enums.IngredientsForPizza;
 import com.vera1s.pizzacafe.entity.enums.NamePizzaEnum;
 import com.vera1s.pizzacafe.entity.enums.SizeItem;
 import jakarta.persistence.*;
@@ -33,7 +32,7 @@ public class Pizza {
             name = "pizza_ingredients_name",
             joinColumns = @JoinColumn(name = "pizza_id"),
             inverseJoinColumns = @JoinColumn(name = "ingredient_id"))
-    private List<IngredientsName> ingredientsNameList;
+    private List<Ingredients> ingredientsList;
 
 //    @Enumerated(EnumType.STRING)
 //    @Column(name = "ingredients_for_pizza")
@@ -46,6 +45,10 @@ public class Pizza {
     @ManyToOne
     @JoinColumn(name = "menu_cafe_id")
     private MenuCafe menuCafe;
+
+    public <E> List<E> getIngredients() {
+        return null;
+    }
 
     //@OneToOne
     //private MenuCafe menuCafe;//связь с меню многие ко многим
