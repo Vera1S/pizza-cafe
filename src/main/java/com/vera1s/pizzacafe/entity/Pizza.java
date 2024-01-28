@@ -1,5 +1,6 @@
 package com.vera1s.pizzacafe.entity;
 
+import com.vera1s.pizzacafe.entity.enums.IngredientsForPizza;
 import com.vera1s.pizzacafe.entity.enums.NamePizzaEnum;
 import com.vera1s.pizzacafe.entity.enums.SizeItem;
 import jakarta.persistence.*;
@@ -25,33 +26,28 @@ public class Pizza {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "name_pizza")
-    private NamePizzaEnum namePizzaEnum;
+    private List<NamePizzaEnum> namePizzaEnum;
 
-    @ManyToMany
-    @JoinTable(
-            name = "pizza_ingredients_name",
-            joinColumns = @JoinColumn(name = "pizza_id"),
-            inverseJoinColumns = @JoinColumn(name = "ingredient_id"))
-    private List<Ingredients> ingredientsList;
 
-//    @Enumerated(EnumType.STRING)
-//    @Column(name = "ingredients_for_pizza")
-//    private IngredientsForPizza ingredients;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "ingredients_for_pizza")
+    private List<IngredientsForPizza> ingredientsForPizza;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "size")
-    private SizeItem sizeItem;
+    private List<SizeItem> sizeItem;
+
+    @ManyToMany
+    @JoinTable(
+            name = "pizza_ingredients",
+            joinColumns = @JoinColumn(name = "pizza_id"),
+            inverseJoinColumns = @JoinColumn(name = "ingredient_id"))
+    private List<Ingredients> ingredientsList;
 
     @ManyToOne
     @JoinColumn(name = "menu_cafe_id")
     private MenuCafe menuCafe;
 
-    public <E> List<E> getIngredients() {
-        return null;
-    }
-
-    //@OneToOne
-    //private MenuCafe menuCafe;//связь с меню многие ко многим
 
 
 }

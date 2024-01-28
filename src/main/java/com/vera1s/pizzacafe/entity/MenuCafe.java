@@ -41,7 +41,7 @@ public class MenuCafe {
     @Column(name = "price")
     private double price;
 
-    @OneToMany(mappedBy = "menu_cafe")
+    @OneToMany(mappedBy = "menuCafe")
     private List<Pizza> pizzas;
 
 
