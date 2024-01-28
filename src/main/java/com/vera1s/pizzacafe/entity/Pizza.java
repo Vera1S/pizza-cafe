@@ -35,16 +35,20 @@ public class Pizza {
             inverseJoinColumns = @JoinColumn(name = "ingredient_id"))
     private List<IngredientsName> ingredientsNameList;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "ingredients_for_pizza")
-    private IngredientsForPizza ingredients;
+//    @Enumerated(EnumType.STRING)
+//    @Column(name = "ingredients_for_pizza")
+//    private IngredientsForPizza ingredients;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "size")
     private SizeItem sizeItem;
 
-    @OneToOne
-    private MenuCafe menuCafe;//связь с меню многие ко многим
+    @ManyToOne
+    @JoinColumn(name = "menu_cafe_id")
+    private MenuCafe menuCafe;
+
+    //@OneToOne
+    //private MenuCafe menuCafe;//связь с меню многие ко многим
 
 
 }

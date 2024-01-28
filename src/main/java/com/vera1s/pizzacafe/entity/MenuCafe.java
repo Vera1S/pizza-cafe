@@ -15,17 +15,19 @@ import java.util.List;
 
 
 @Entity
-@Table(name = "menu_Cafe")
+@Table(name = "menu_cafe")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class MenuCafe {
 
     @Id
-    @Column(name = "menu_Cafe_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "menu_cafe_id")
     private Integer id;
 
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "cafe_id")
     private Cafe cafe;
 
     @Enumerated(EnumType.STRING)
@@ -39,7 +41,7 @@ public class MenuCafe {
     @Column(name = "price")
     private double price;
 
-    @ManyToMany(mappedBy = "ingredients")
+    @OneToMany(mappedBy = "menu_cafe")
     private List<Pizza> pizzas;
 
 

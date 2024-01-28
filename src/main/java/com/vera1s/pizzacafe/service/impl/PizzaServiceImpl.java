@@ -22,9 +22,9 @@ public class PizzaServiceImpl implements PizzaService {
         List<Pizza> Pizza = pizzaRepository.findAll();
 
         if (Pizza.isEmpty()) {
-            throw new RuntimeException();
+            throw new RuntimeException("Unable to create new pizza - no existing pizzas found.");
         }
-        return null;
+        return new Pizza();
     }
 
     @Override
@@ -34,7 +34,7 @@ public class PizzaServiceImpl implements PizzaService {
         if (optional.isPresent()) {
             return optional.get();
         } else {
-            return null;
+            return null; //return pizzaRepository.findById(id).orElse(null);
         }
     }
 
@@ -63,4 +63,4 @@ public class PizzaServiceImpl implements PizzaService {
             pizzaRepository.save(persistPerson); //пересохраняем старую pizza
         }
     }
-    }
+}
