@@ -28,6 +28,12 @@ public class PizzaServiceImpl implements PizzaService {
     }
 
     @Override
+    public List<Pizza> getAllPizzas() {
+        return pizzaRepository.findAll();
+    }
+
+
+    @Override
     public Pizza getById(Integer id) {
         Optional<Pizza> optional = pizzaRepository.findById(id);
 
@@ -40,7 +46,7 @@ public class PizzaServiceImpl implements PizzaService {
 
     @Override
     public void save(Pizza pizza) {
-        if (pizza == null){
+        if (pizza == null) {
             return;
         }
         pizzaRepository.save(pizza);

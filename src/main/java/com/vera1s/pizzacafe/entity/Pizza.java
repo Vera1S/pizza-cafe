@@ -26,7 +26,7 @@ public class Pizza {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "name_pizza")
-    private List<NamePizzaEnum> namePizzaEnum;
+    private NamePizzaEnum namePizzaEnum;
 
 
     @Enumerated(EnumType.STRING)
@@ -35,7 +35,7 @@ public class Pizza {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "size")
-    private List<SizeItem> sizeItem;
+    private SizeItem sizeItem;
 
     @ManyToMany
     @JoinTable(
@@ -43,6 +43,12 @@ public class Pizza {
             joinColumns = @JoinColumn(name = "pizza_id"),
             inverseJoinColumns = @JoinColumn(name = "ingredient_id"))
     private List<Ingredients> ingredientsList;
+
+    @ElementCollection(targetClass = IngredientsForPizza.class)
+    @CollectionTable(name = "pizza_ingredients", joinColumns = @JoinColumn(name = "pizza_id"))
+    @Enumerated(EnumType.STRING)
+    @Column(name = "ingredients_for_pizza")
+    private List<IngredientsForPizza> ingredientsForPizza;
 
     @ManyToOne
     @JoinColumn(name = "menu_cafe_id")

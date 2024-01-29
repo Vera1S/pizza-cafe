@@ -9,6 +9,8 @@ public interface PizzaService {
 
     Pizza getNewPizza(Integer id);
 
+    public List<Pizza> getAllPizzas();
+
     Pizza getById(Integer id);
 
     void save(Pizza pizza);
