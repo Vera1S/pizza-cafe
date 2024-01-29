@@ -19,7 +19,7 @@ public class IngredientsServiceImpl implements IngredientsService {
     private final IngredientsRepository ingredientsRepository;
 
     @Override
-    public Ingredients getNewIngredients(Integer id) {
+    public Ingredients getIngredientsById(Integer id){
         List<Ingredients> ingredients = ingredientsRepository.findAll();
         if (ingredients.isEmpty()){
             throw new RuntimeException("Unable to create new ingredient - no existing ingredients found.");
@@ -55,6 +55,7 @@ public class IngredientsServiceImpl implements IngredientsService {
     public void remove(Ingredients ingredients) {
 
     }
+
 
 //    public void addIngredientToPizza(Pizza pizza, Ingredients ingredient) {
 //        List<Pizza> ingredientToPizza = new ArrayList<>();

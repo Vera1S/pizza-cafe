@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
+import java.util.Set;
 
 //Название пиццы согласно ингридиентам
 
@@ -28,15 +29,6 @@ public class Pizza {
     @Column(name = "name_pizza")
     private NamePizzaEnum namePizzaEnum;
 
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "ingredients_for_pizza")
-    private List<IngredientsForPizza> ingredientsForPizza;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "size")
-    private SizeItem sizeItem;
-
     @ManyToMany
     @JoinTable(
             name = "pizza_ingredients",
@@ -45,15 +37,16 @@ public class Pizza {
     private List<Ingredients> ingredientsList;
 
     @ElementCollection(targetClass = IngredientsForPizza.class)
-    @CollectionTable(name = "pizza_ingredients", joinColumns = @JoinColumn(name = "pizza_id"))
     @Enumerated(EnumType.STRING)
     @Column(name = "ingredients_for_pizza")
-    private List<IngredientsForPizza> ingredientsForPizza;
+    private Set<IngredientsForPizza> ingredientsForPizza;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "size")
+    private SizeItem sizeItem;
 
     @ManyToOne
     @JoinColumn(name = "menu_cafe_id")
     private MenuCafe menuCafe;
 
-
-
-}
+   }

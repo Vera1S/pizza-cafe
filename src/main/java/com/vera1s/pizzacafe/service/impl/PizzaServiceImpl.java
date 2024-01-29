@@ -1,5 +1,6 @@
 package com.vera1s.pizzacafe.service.impl;
 
+import com.vera1s.pizzacafe.entity.Ingredients;
 import com.vera1s.pizzacafe.entity.Pizza;
 import com.vera1s.pizzacafe.repository.PizzaRepository;
 import com.vera1s.pizzacafe.service.interfaces.PizzaService;
@@ -54,10 +55,9 @@ public class PizzaServiceImpl implements PizzaService {
 
     @Override
     public void deleteById(Integer id) {
-        if (id == null) {
-            return;
+        if (id != null && pizzaRepository.existsById(id)) {    //если id не равно 0 и существует по идентификатору
+            pizzaRepository.deleteById(id);
         }
-        pizzaRepository.deleteById(id);
     }
 
     @Override
@@ -67,6 +67,14 @@ public class PizzaServiceImpl implements PizzaService {
             Pizza persistPerson = persistPizzaOptional.get();
             persistPerson.setNamePizzaEnum(pizza.getNamePizzaEnum()); //в старую pizza устанавливаем новое имя
             pizzaRepository.save(persistPerson); //пересохраняем старую pizza
+        }
+    }
+    public List<Ingredients> getIngredientsForPizza(Integer pizzaId) {
+        Pizza pizza = getById(pizzaId); // Предполагается, что у вас есть метод getById в сервисе
+        if (pizza != null) {
+            return pizza.getIngredientsList();
+        } else {
+            throw new RuntimeException("Pizza not found");
         }
     }
 }

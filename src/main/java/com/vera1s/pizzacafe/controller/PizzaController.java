@@ -1,5 +1,6 @@
 package com.vera1s.pizzacafe.controller;
 
+import com.vera1s.pizzacafe.dto.PizzaDTO;
 import com.vera1s.pizzacafe.entity.Pizza;
 import com.vera1s.pizzacafe.service.interfaces.PizzaService;
 import lombok.RequiredArgsConstructor;
@@ -7,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
@@ -37,4 +39,6 @@ public class PizzaController {
     public void updatePizzaById(@PathVariable(value = "id")Integer id, @RequestBody Pizza pizza){
         pizzaService.update(id, pizza);
     }
+
+
 }
