@@ -13,11 +13,11 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
-public class PizzaDTOController {
+public class PizzaDTOController { //переименовать класс и добавить методы админа
 
     private final PizzaService pizzaService;
 
-        @GetMapping
+        @GetMapping("/name")
     public ResponseEntity<List<PizzaDTO>> getAllPizzas() {
         List<Pizza> pizzas = pizzaService.getAllPizzas();
 
@@ -28,11 +28,12 @@ public class PizzaDTOController {
                 //Создает успешный HTTP-ответ (200 OK) и возвращает список DTO пицц в теле ответа.
                 .collect(Collectors.toList());
 
+        //ResponseEntity.ok(pizzaDTOs): Создает успешный HTTP-ответ (200 OK) и возвращает список DTO пицц в теле ответа.
         return ResponseEntity.ok(pizzaDTOs);
     }
 
         private PizzaDTO convertToDTO(Pizza pizza) {
-        return new PizzaDTO(pizza.getNamePizzaEnum(), pizza.getSizeItem(), pizza.getIngredientsForPizza());
+        return new PizzaDTO(pizza.getNamePizzaEnum(), pizza.getSizeItem(), null);
     }
 
 }

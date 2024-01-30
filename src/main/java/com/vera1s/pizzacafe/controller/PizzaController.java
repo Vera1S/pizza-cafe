@@ -22,7 +22,7 @@ public class PizzaController {
         return pizza;
     }
 
-    @GetMapping
+    @GetMapping(value = "/pizza")
     public ResponseEntity<List<Pizza>> getAllPizzas() {
         List<Pizza> pizzas = pizzaService.getAllPizzas();
         return ResponseEntity.ok(pizzas);

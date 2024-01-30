@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class BasketItem {
 
     @Id
-    @Column(name = "basket_id")
+    @Column(name = "id")
     private Integer id;
 
     @Column(name = "name")

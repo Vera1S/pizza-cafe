@@ -9,21 +9,22 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Entity
-@Table(name = "ingredients_name")
+@Table(name = "ingredients")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Ingredients {
 
     @Id
-    @Column(name = "ingredients_id")
+    @Column(name = "id")
     private Integer id;
 
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "ingredients_name")
     private IngredientsForPizza ingredientsName;
 
-    @ManyToMany(mappedBy = "ingredients")
-    private List<Pizza> pizza;
+//    @ManyToMany(mappedBy = "ingredients")
+//    private List<Pizza> pizza;
 
 }

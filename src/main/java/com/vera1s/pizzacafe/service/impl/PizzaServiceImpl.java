@@ -69,12 +69,12 @@ public class PizzaServiceImpl implements PizzaService {
             pizzaRepository.save(persistPerson); //пересохраняем старую pizza
         }
     }
-    public List<Ingredients> getIngredientsForPizza(Integer pizzaId) {
-        Pizza pizza = getById(pizzaId); // Предполагается, что у вас есть метод getById в сервисе
-        if (pizza != null) {
-            return pizza.getIngredientsList();
-        } else {
-            throw new RuntimeException("Pizza not found");
-        }
-    }
+//    public List<Ingredients> getIngredientsForPizza(Integer pizzaId) {
+//        Pizza pizza = getById(pizzaId);
+//        if (pizza != null) {
+//            return pizza.getIngredients();
+//        } else {
+//            throw new RuntimeException("Pizza not found");
+//        }
+//    }
 }

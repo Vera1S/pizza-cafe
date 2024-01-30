@@ -23,7 +23,7 @@ public class MenuCafe {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "menu_cafe_id")
+    @Column(name = "id")
     private Integer id;
 
     @ManyToOne

@@ -22,24 +22,16 @@ public class Pizza {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "pizza_id")
+    @Column(name = "id")
     private Integer id;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "name_pizza")
     private NamePizzaEnum namePizzaEnum;
 
-    @ManyToMany
-    @JoinTable(
-            name = "pizza_ingredients",
-            joinColumns = @JoinColumn(name = "pizza_id"),
-            inverseJoinColumns = @JoinColumn(name = "ingredient_id"))
-    private List<Ingredients> ingredientsList;
 
-    @ElementCollection(targetClass = IngredientsForPizza.class)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "ingredients_for_pizza")
-    private Set<IngredientsForPizza> ingredientsForPizza;
+    @ManyToMany
+    private List<Ingredients> ingredients;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "size")
