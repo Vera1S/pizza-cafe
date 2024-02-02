@@ -22,9 +22,7 @@ public class Ingredients {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "ingredients_name")
-    private IngredientsForPizza ingredientsName;
+    private IngredientsForPizza name;
 
-//    @ManyToMany(mappedBy = "ingredients")
-//    private List<Pizza> pizza;
 
 }

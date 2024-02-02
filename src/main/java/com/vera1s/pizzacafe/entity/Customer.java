@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Table(name = "customer")
 @Data
@@ -32,5 +34,14 @@ public class Customer {
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
     private CustomerStatus status;
+
+    @OneToMany(mappedBy = "customers")
+    private List<Order> orders;
+
+    @OneToMany(mappedBy = "customers")
+    private List<BasketItem> basketItem;
+
+    @OneToMany(mappedBy = "customers")
+    private List<Delivery> deliveries;
 
 }

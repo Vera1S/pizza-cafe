@@ -15,24 +15,20 @@ import java.util.List;
 
 
 @Entity
-@Table(name = "menu_cafe")
+@Table(name = "menu_item")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class MenuCafe {
+public class MenuItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 
-    @ManyToOne
-    @JoinColumn(name = "cafe_id")
-    private Cafe cafe;
-
     @Enumerated(EnumType.STRING)
     @Column(name = "name_Pizza")
-    private NamePizzaEnum namePizzaEnum;  //только пиццу
+    private NamePizzaEnum namePizzaEnum;  //только пиццу убрать енам и сделать строку
 
         @Enumerated(EnumType.STRING)
     @Column(name = "size")
@@ -41,9 +37,13 @@ public class MenuCafe {
     @Column(name = "price")
     private double price;
 
-    @OneToMany(mappedBy = "menuCafe")
+    @ManyToOne
+    private Cafe cafe;
+
+    @OneToMany(mappedBy = "menuItem")
     private List<Pizza> pizzas;
 
-
+    @OneToMany(mappedBy = "menuItem")
+    private List<BasketItem> basketItems;
 
 }

@@ -2,15 +2,15 @@ package com.vera1s.pizzacafe.service.interfaces;
 
 import com.vera1s.pizzacafe.entity.Ingredients;
 
-public interface IngredientsService {
+import java.util.List;
 
-    Ingredients getIngredientsById(Integer id);
+public interface IngredientsService {
 
     Ingredients getById(Integer id);
 
-    void save(Ingredients ingredients);
+    List<Ingredients> getAllIngredients();
 
-    void add(Ingredients ingredients);
+    void save(Ingredients ingredients);
 
     void remove(Ingredients ingredients);
 }

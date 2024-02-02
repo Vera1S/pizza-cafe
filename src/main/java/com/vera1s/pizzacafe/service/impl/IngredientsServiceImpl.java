@@ -18,14 +18,14 @@ public class IngredientsServiceImpl implements IngredientsService {
 
     private final IngredientsRepository ingredientsRepository;
 
-    @Override
-    public Ingredients getIngredientsById(Integer id){
-        List<Ingredients> ingredients = ingredientsRepository.findAll();
-        if (ingredients.isEmpty()){
-            throw new RuntimeException("Unable to create new ingredient - no existing ingredients found.");
-        }
-        return new Ingredients();
-    }
+//    @Override
+//    public Ingredients getIngredientsById(Integer id){
+//        List<Ingredients> ingredients = ingredientsRepository.findAll();
+//        if (ingredients.isEmpty()){
+//            throw new RuntimeException("Unable to create new ingredient - no existing ingredients found.");
+//        }
+//        return new Ingredients();
+//    }
 
 
     @Override
@@ -40,16 +40,17 @@ public class IngredientsServiceImpl implements IngredientsService {
     }
 
     @Override
+    public List<Ingredients> getAllIngredients() {
+        return ingredientsRepository.findAll();
+    }
+
+    @Override
     public void save(Ingredients ingredients) {
         if (ingredients == null){
             return;
         }
         ingredientsRepository.save(ingredients);
     }
-
-    @Override
-    public void add(Ingredients ingredients) {
-           }
 
     @Override
     public void remove(Ingredients ingredients) {

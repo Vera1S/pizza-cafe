@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Table(name = "delivery")
 @Data
@@ -18,22 +20,19 @@ public class Delivery {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "name")
-    private String name;
-
-       @Column(name = "address")
-    private String address;
-
-    @Column(name = "phone")
-    private String phone;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "customer_status")
-    private CustomerStatus customerStatus;
-
     @Enumerated(EnumType.STRING)
     @Column(name = "driver_status")
     private DriverStatus driverStatus;
 
     // добавить связь заказ
+    @OneToOne
+    private Order order;
+
+    @ManyToOne
+    private Customer customers;
+
+    @ManyToOne
+    private Cafe cafe;
 }
+//дата доставки
+//стоимость достаки

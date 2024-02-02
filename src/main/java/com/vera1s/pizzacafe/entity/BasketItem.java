@@ -33,7 +33,10 @@ public class BasketItem {
     @ManyToOne
     private Customer customers;
 
-    @OneToOne
-    private Cafe cafe;
+    @ManyToOne
+    private Order order;
+
+    @ManyToOne
+    private MenuItem menuItem;
 
 }

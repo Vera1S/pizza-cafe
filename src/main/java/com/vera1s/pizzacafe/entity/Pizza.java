@@ -1,6 +1,5 @@
 package com.vera1s.pizzacafe.entity;
 
-import com.vera1s.pizzacafe.entity.enums.IngredientsForPizza;
 import com.vera1s.pizzacafe.entity.enums.NamePizzaEnum;
 import com.vera1s.pizzacafe.entity.enums.SizeItem;
 import jakarta.persistence.*;
@@ -9,7 +8,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
-import java.util.Set;
 
 //Название пиццы согласно ингридиентам
 
@@ -27,7 +25,7 @@ public class Pizza {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "name_pizza")
-    private NamePizzaEnum namePizzaEnum;
+    private NamePizzaEnum namePizzaEnum; //убрать енам и сделать строку
 
 
     @ManyToMany
@@ -38,7 +36,6 @@ public class Pizza {
     private SizeItem sizeItem;
 
     @ManyToOne
-    @JoinColumn(name = "menu_cafe_id")
-    private MenuCafe menuCafe;
+    private MenuItem menuItem;
 
    }
