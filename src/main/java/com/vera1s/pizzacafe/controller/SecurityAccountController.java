@@ -2,7 +2,7 @@ package com.vera1s.pizzacafe.controller;
 
 
 import com.vera1s.pizzacafe.entity.SecurityAccount;
-import com.vera1s.pizzacafe.service.SecurityAccountService;
+import com.vera1s.pizzacafe.service.interfaces.SecurityAccountService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

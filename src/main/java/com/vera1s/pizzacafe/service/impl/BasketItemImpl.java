@@ -1,12 +1,14 @@
 package com.vera1s.pizzacafe.service.impl;
 
 import com.vera1s.pizzacafe.entity.BasketItem;
+import com.vera1s.pizzacafe.entity.Customer;
 import com.vera1s.pizzacafe.repository.BasketItemRepository;
 import com.vera1s.pizzacafe.service.interfaces.BasketItemService;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,6 +37,11 @@ public class BasketItemImpl implements BasketItemService {
         return basketItemRepository.findAll();
     }
 
+    @Override
+    public Collection<BasketItem> getAllByCustomers(Customer customer) {
+        return basketItemRepository.findAllByCustomers(customer);
+    }
+
 
     @Override
     public void save(BasketItem basketItem) {
@@ -57,7 +64,13 @@ public class BasketItemImpl implements BasketItemService {
         if (persistBasketItemOptional.isPresent()) { //если есть
             BasketItem persistBasketItem = persistBasketItemOptional.get();//покажи
             persistBasketItem.setNameDishes(basketItem.getNameDishes()); //в старый BasketItem устанавливаем новое имя
-            //заменить всю карзину
+            persistBasketItem.setMenuItem(basketItem.getMenuItem());
+            persistBasketItem.setSizeItem(basketItem.getSizeItem());
+            persistBasketItem.setId(basketItem.getId());
+            persistBasketItem.setOrder(basketItem.getOrder());
+            //persistBasketItem.setCustomers(basketItem.getCustomers());
+            persistBasketItem.setPrice(basketItem.getPrice());
+            persistBasketItem.setQuantity(basketItem.getQuantity());
             basketItemRepository.save(persistBasketItem); //пересохраняем старый BasketItem
         }
     }

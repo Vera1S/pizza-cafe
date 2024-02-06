@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -16,6 +17,7 @@ import java.util.List;
 public class Order {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 
@@ -29,10 +31,15 @@ public class Order {
     private Cafe cafe;
 
     @OneToMany(mappedBy = "order")
-    private List<BasketItem> basketItem;
+    private Collection<BasketItem> basketItem;
 
     @OneToOne
     private Delivery deliveries;
+
+    public Order(double price, Customer customers) {
+        this.price = price;
+        this.customers = customers;
+    }
 }
 // дата создания заказа
 //общую стоимость метод в сервисе

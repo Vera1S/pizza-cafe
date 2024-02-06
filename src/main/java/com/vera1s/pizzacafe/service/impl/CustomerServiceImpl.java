@@ -65,7 +65,12 @@ public class CustomerServiceImpl implements CustomerService {
         if (persistCustomerOptional.isPresent()) { //если есть
             Customer persistCustomer = persistCustomerOptional.get();//покажи
             persistCustomer.setName(customer.getName()); //в старый customer устанавливаем новое имя
-            //обновдение каждого поле
+            persistCustomer.setAddress(customer.getAddress());
+            persistCustomer.setId(customer.getId());
+            persistCustomer.setEmail(customer.getEmail());
+            persistCustomer.setOrders(customer.getOrders());
+            persistCustomer.setBasketItem(customer.getBasketItem());
+            persistCustomer.setDeliveries(customer.getDeliveries());
             customerRepository.save(persistCustomer); //пересохраняем старый клиент
         }
     }

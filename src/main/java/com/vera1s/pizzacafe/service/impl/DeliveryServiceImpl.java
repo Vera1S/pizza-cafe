@@ -51,8 +51,10 @@ public class DeliveryServiceImpl implements DeliveryService {
         Optional<Delivery> persistDeliveryOptional = deliveryRepository.findById(id);
         if (persistDeliveryOptional.isPresent()) { //если есть
             Delivery persistDelivery = persistDeliveryOptional.get();//покажи
-          //  persistDelivery.setName(delivery.getName()); //в старый BasketItem устанавливаем новое имя
-   // все поля обновить
+            persistDelivery.setId(delivery.getId()); //в старый BasketItem устанавливаем новое имя
+            persistDelivery.setCustomers(delivery.getCustomers());
+           // persistDelivery.getDriverStatus(delivery.getDriverStatus().);
+            persistDelivery.setOrder(delivery.getOrder());
             deliveryRepository.save(persistDelivery); //пересохраняем старую доставку
         }
     }

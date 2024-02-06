@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -39,7 +40,7 @@ public class Customer {
     private List<Order> orders;
 
     @OneToMany(mappedBy = "customers")
-    private List<BasketItem> basketItem;
+    private Collection<BasketItem> basketItem;
 
     @OneToMany(mappedBy = "customers")
     private List<Delivery> deliveries;

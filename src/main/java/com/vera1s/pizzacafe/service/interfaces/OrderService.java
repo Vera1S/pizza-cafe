@@ -16,4 +16,6 @@ public interface OrderService {
 
     void update(Integer id, Order order);
 
+    void formOrder(Integer customerId);
+
 }

@@ -27,6 +27,7 @@ public class OrderController {
         List<Order> orders = orderService.getAllOrder();
         return ResponseEntity.ok(orders);
     }
+
     @PostMapping(value = "/save")
     public void saveOrder(@RequestBody Order order){
         orderService.save(order);
@@ -35,8 +36,12 @@ public class OrderController {
     public void deleteById(@PathVariable(value = "id")Integer id){
         orderService.deleteById(id);
     }
-    @PutMapping(value = "/update/")
+    @PutMapping(value = "/update/{id}")
     public void updateOrderById(@PathVariable(value = "id")Integer id, @RequestBody Order order){
         orderService.update(id, order);
+    }
+    @PostMapping(value = "/form-order/{id}")
+    public void formOrderById(@PathVariable(value = "id")Integer id){
+        orderService.formOrder(id);
     }
 }

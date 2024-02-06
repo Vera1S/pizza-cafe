@@ -49,7 +49,7 @@ public class WebSecurityConfiguration {
         return userDetailsService;
 
 
-//        new User("Daniil", "Daniil", List.of("Admin"));
+
 
 //        UserDetails userDetails =
 //                User.builder()
@@ -64,7 +64,7 @@ public class WebSecurityConfiguration {
     @Bean
     public PasswordEncoder passwordEncoder() {
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-        System.out.println(bCryptPasswordEncoder.encode("qwerty"));
+        System.out.println(bCryptPasswordEncoder.encode("qwerty")); // просмотр зашифрованных пароль
         System.out.println(bCryptPasswordEncoder.encode("Vera"));
         return bCryptPasswordEncoder;
     }
