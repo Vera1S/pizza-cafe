@@ -26,9 +26,8 @@ public class MenuItem {
     @Column(name = "id")
     private Integer id;
 
-    @Enumerated(EnumType.STRING)
     @Column(name = "name_Pizza")
-    private NamePizzaEnum namePizzaEnum;  //только пиццу убрать енам и сделать строку
+    private String namePizza;
 
         @Enumerated(EnumType.STRING)
     @Column(name = "size")

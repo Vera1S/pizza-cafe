@@ -12,30 +12,31 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/pizza")
 public class PizzaController {
 
     private final PizzaService pizzaService;
 
-    @GetMapping(value = "/pizza/{id}")
+    @GetMapping(value = "/id")
     public Pizza getPizzaById(@PathVariable(value = "id")Integer id){
         Pizza pizza = pizzaService.getById(id);
         return pizza;
     }
 
-    @GetMapping(value = "/pizza")
+    @GetMapping(value = "/all")
     public ResponseEntity<List<Pizza>> getAllPizzas() {
         List<Pizza> pizzas = pizzaService.getAllPizzas();
         return ResponseEntity.ok(pizzas);
     }
-    @PostMapping(value = "/pizza")
+    @PostMapping(value = "/save")
     public void savePizza(@RequestBody Pizza pizza){
         pizzaService.save(pizza);
     }
-    @DeleteMapping(value = "/pizza/{id}")
+    @DeleteMapping(value = "/delete")
     public void deleteById(@PathVariable(value = "id")Integer id){
         pizzaService.deleteById(id);
     }
-    @PutMapping(value = "/pizza/{id}")
+    @PutMapping(value = "/update")
     public void updatePizzaById(@PathVariable(value = "id")Integer id, @RequestBody Pizza pizza){
         pizzaService.update(id, pizza);
     }

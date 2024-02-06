@@ -23,10 +23,8 @@ public class Pizza {
     @Column(name = "id")
     private Integer id;
 
-    @Enumerated(EnumType.STRING)
     @Column(name = "name_pizza")
-    private NamePizzaEnum namePizzaEnum; //убрать енам и сделать строку
-
+    private String namePizza;
 
     @ManyToMany
     private List<Ingredients> ingredients;

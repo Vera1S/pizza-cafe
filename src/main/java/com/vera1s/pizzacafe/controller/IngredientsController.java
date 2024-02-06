@@ -1,7 +1,7 @@
 package com.vera1s.pizzacafe.controller;
 
-import com.vera1s.pizzacafe.entity.Ingredients;
 
+import com.vera1s.pizzacafe.entity.Ingredients;
 import com.vera1s.pizzacafe.service.interfaces.IngredientsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -30,6 +30,14 @@ public class IngredientsController {
     @PostMapping(value = "/save")
     public void saveIngredients(@RequestBody Ingredients ingredients){
         ingredientsService.save(ingredients);
+    }
+    @DeleteMapping(value = "/delete")
+    public void deleteById(@PathVariable(value = "id")Integer id){
+        ingredientsService.deleteById(id);
+    }
+    @PutMapping(value = "/update")
+    public void updateIngredientsById(@PathVariable(value = "id")Integer id, @RequestBody Ingredients ingredients){
+        ingredientsService.update(id, ingredients);
     }
 
 }

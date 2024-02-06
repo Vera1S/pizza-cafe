@@ -24,7 +24,6 @@ public class Delivery {
     @Column(name = "driver_status")
     private DriverStatus driverStatus;
 
-    // добавить связь заказ
     @OneToOne
     private Order order;
 

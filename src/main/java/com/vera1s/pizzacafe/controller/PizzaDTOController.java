@@ -17,23 +17,23 @@ public class PizzaDTOController { //переименовать класс и д�
 
     private final PizzaService pizzaService;
 
-        @GetMapping("/name")
-    public ResponseEntity<List<PizzaDTO>> getAllPizzas() {
-        List<Pizza> pizzas = pizzaService.getAllPizzas();
+//        @GetMapping("/name")
+//    public ResponseEntity<List<PizzaDTO>> getAllPizzas() {
+//        List<Pizza> pizzas = pizzaService.getAllPizzas();
+//
+//        List<PizzaDTO> pizzaDTOs = pizzas.stream()
+//                //stream() и map(this::convertToDTO) это Используются для преобразования каждой сущности Pizza в соответствующий DTO.
+//                //convertToDTO(Pizza pizza) это Приватный метод, который преобразует сущность Pizza в DTO.
+//             //   .map(this::convertToDTO)
+//                //Создает успешный HTTP-ответ (200 OK) и возвращает список DTO пицц в теле ответа.
+//                .collect(Collectors.toList());
+//
+//        //ResponseEntity.ok(pizzaDTOs): Создает успешный HTTP-ответ (200 OK) и возвращает список DTO пицц в теле ответа.
+//        return ResponseEntity.ok(pizzaDTOs);
+//    }
 
-        List<PizzaDTO> pizzaDTOs = pizzas.stream()
-                //stream() и map(this::convertToDTO) это Используются для преобразования каждой сущности Pizza в соответствующий DTO.
-                //convertToDTO(Pizza pizza) это Приватный метод, который преобразует сущность Pizza в DTO.
-                .map(this::convertToDTO)
-                //Создает успешный HTTP-ответ (200 OK) и возвращает список DTO пицц в теле ответа.
-                .collect(Collectors.toList());
-
-        //ResponseEntity.ok(pizzaDTOs): Создает успешный HTTP-ответ (200 OK) и возвращает список DTO пицц в теле ответа.
-        return ResponseEntity.ok(pizzaDTOs);
-    }
-
-        private PizzaDTO convertToDTO(Pizza pizza) {
-        return new PizzaDTO(pizza.getNamePizzaEnum(), pizza.getSizeItem(), null);
-    }
+//        private PizzaDTO convertToDTO(Pizza pizza) {
+//        return new PizzaDTO(pizza.getNamePizza(), pizza.getSizeItem(), null);
+//    }
 
 }

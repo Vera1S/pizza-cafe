@@ -12,5 +12,7 @@ public interface IngredientsService {
 
     void save(Ingredients ingredients);
 
-    void remove(Ingredients ingredients);
+    void deleteById(Integer id);
+
+    void update(Integer id, Ingredients ingredients);
 }

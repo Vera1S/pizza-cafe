@@ -28,7 +28,6 @@ public class Order {
     @ManyToOne
     private Cafe cafe;
 
-    //список заказанного меню
     @OneToMany(mappedBy = "order")
     private List<BasketItem> basketItem;
 

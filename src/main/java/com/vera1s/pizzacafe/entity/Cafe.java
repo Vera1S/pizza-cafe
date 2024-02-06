@@ -30,7 +30,7 @@ public class Cafe {
     @Column(name = "email")
     private String email;
 
-    @Column(name = "adress")
+    @Column(name = "address")
     private String address;
 
     @Column(name = "phone")

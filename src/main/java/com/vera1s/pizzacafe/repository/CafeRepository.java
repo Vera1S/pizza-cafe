@@ -1,16 +1,13 @@
 package com.vera1s.pizzacafe.repository;
 
-import com.vera1s.pizzacafe.entity.Customer;
-
+import com.vera1s.pizzacafe.entity.Cafe;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
 @Repository
-public interface CustomerRepository extends JpaRepository<Customer, Integer> {
+public interface CafeRepository extends JpaRepository<Cafe, Integer> {
 
-    Optional<Customer> findById(Integer id);
-
-
+    Optional<Cafe> findById(Integer id);
 }

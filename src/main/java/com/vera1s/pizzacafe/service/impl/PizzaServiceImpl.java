@@ -64,9 +64,9 @@ public class PizzaServiceImpl implements PizzaService {
     public void update(Integer id, Pizza pizza) {
         Optional<Pizza> persistPizzaOptional = pizzaRepository.findById(id);
         if (persistPizzaOptional.isPresent()) { //если есть
-            Pizza persistPerson = persistPizzaOptional.get();
-            persistPerson.setNamePizzaEnum(pizza.getNamePizzaEnum()); //в старую pizza устанавливаем новое имя
-            pizzaRepository.save(persistPerson); //пересохраняем старую pizza
+            Pizza persistPizza = persistPizzaOptional.get();
+            persistPizza.setNamePizza(pizza.getNamePizza()); //в старую pizza устанавливаем новое имя
+            pizzaRepository.save(persistPizza); //пересохраняем старую pizza
         }
     }
 //    public List<Ingredients> getIngredientsForPizza(Integer pizzaId) {
