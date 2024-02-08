@@ -64,7 +64,6 @@ public class OrderServiceImpl implements OrderService {
     }
 
     public void formOrder(Integer customerId) {
-        // Забрать пиццу и клиент
 
         Customer customer = customerService.getById(customerId);
         Collection<BasketItem> basketAllItems = customer.getBasketItem(); // все товары у клиента покажет
@@ -76,10 +75,7 @@ public class OrderServiceImpl implements OrderService {
         orderRepository.save(order); //сохранить заказ в 75 строке
     }
 
-    // Проверьте, существуют ли как пицца, так и клиент
-    // if (customer == null) {
-//            throw new IllegalArgumentException("Invalid pizza or customer"); //Недействительная пицца или клиент
-//    }
+
 }
 
 

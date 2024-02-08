@@ -3,7 +3,9 @@ package com.vera1s.pizzacafe.service.impl;
 
 import com.vera1s.pizzacafe.entity.Delivery;
 import com.vera1s.pizzacafe.repository.DeliveryRepository;
+import com.vera1s.pizzacafe.service.interfaces.CustomerService;
 import com.vera1s.pizzacafe.service.interfaces.DeliveryService;
+import com.vera1s.pizzacafe.service.interfaces.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,8 @@ import java.util.Optional;
 public class DeliveryServiceImpl implements DeliveryService {
 
     private final DeliveryRepository deliveryRepository;
+    private final CustomerService customerService;
+    private final OrderService orderService;
 
     @Override
     public Delivery getById(Integer id) {
@@ -58,4 +62,5 @@ public class DeliveryServiceImpl implements DeliveryService {
             deliveryRepository.save(persistDelivery); //пересохраняем старую доставку
         }
     }
+
 }
