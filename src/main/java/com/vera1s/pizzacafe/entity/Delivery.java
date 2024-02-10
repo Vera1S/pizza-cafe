@@ -34,4 +34,4 @@ public class Delivery {
     private Cafe cafe;
 }
 //дата доставки
-//стоимость достаки
+

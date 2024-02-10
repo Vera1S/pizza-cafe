@@ -17,6 +17,7 @@ import java.util.Optional;
 public class PizzaServiceImpl implements PizzaService {
 
     private final PizzaRepository pizzaRepository;
+    private final PriceMenuServiceImpl priceMenuService;
 
     @Override
     public Pizza getNewPizza(Integer id) {
@@ -50,6 +51,7 @@ public class PizzaServiceImpl implements PizzaService {
         if (pizza == null) {
             return;
         }
+        double price = priceMenuService.calculatePrice(pizza.getSizeItem(), pizza.getMenuItem().getPrice());
         pizzaRepository.save(pizza);
     }
 

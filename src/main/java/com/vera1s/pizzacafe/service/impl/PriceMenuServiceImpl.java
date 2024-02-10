@@ -11,17 +11,21 @@ public class PriceMenuServiceImpl {
     private final double COEFFICIENT_SMALL_PRICE = 1.0;
 
 
-    public void PriceMenu(SizeItem sizeItem, int price) {
-        if (sizeItem == SizeItem.LARGE) {
-            System.out.println(price * COEFFICIENT_LARGE_PRICE);
-        } else if (sizeItem == SizeItem.MEDIUM) {
-            System.out.println(price * COEFFICIENT_MEDIUM_PRICE);
-        } else if (sizeItem == SizeItem.SMALL) {
-            System.out.println(COEFFICIENT_SMALL_PRICE);
-        } else {
-            System.out.println("Invalid sizeItem");
-        }
+    public double calculatePrice(SizeItem sizeItem, double price) {
+       return switch (sizeItem) {
+            case LARGE -> price * COEFFICIENT_LARGE_PRICE;
+            case MEDIUM -> price * COEFFICIENT_MEDIUM_PRICE;
+            case SMALL -> price * COEFFICIENT_SMALL_PRICE;
+        };
+
+//        if (sizeItem == SizeItem.LARGE) {
+//            return price * COEFFICIENT_LARGE_PRICE;
+//        } else if (sizeItem == SizeItem.MEDIUM) {
+//            return price * COEFFICIENT_MEDIUM_PRICE;
+//        } else if (sizeItem == SizeItem.SMALL) {
+//            return price *COEFFICIENT_SMALL_PRICE;
+//        } else {
+//            throw new RuntimeException("Неправильный размер пиццы");
+//        }
     }
-
-
 }

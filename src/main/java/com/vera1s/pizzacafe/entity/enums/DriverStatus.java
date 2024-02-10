@@ -4,5 +4,6 @@ public enum DriverStatus {
     PENDING,
     DISPATCHED,
     DELIVERED,
-    FAILED
+    FAILED,
+    ERROR
 }

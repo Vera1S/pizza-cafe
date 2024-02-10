@@ -45,4 +45,4 @@ public class Customer {
     @OneToMany(mappedBy = "customers")
     private List<Delivery> deliveries;
 
-}
+   }
