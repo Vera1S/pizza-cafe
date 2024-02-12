@@ -27,15 +27,15 @@ public class MenuItemController {
         List<MenuItem> menuItems = menuItemService.getAllCafe();
         return ResponseEntity.ok(menuItems);
     }
-    @PostMapping(value = "/save")
+    @PostMapping(value = "/save/{id}")
     public void saveMenuItem(@RequestBody MenuItem menuItem){
         menuItemService.save(menuItem);
     }
-    @DeleteMapping(value = "/delete")
+    @DeleteMapping(value = "/delete/{id}")
     public void deleteById(@PathVariable(value = "id")Integer id){
         menuItemService.deleteById(id);
     }
-    @PutMapping(value = "/update")
+    @PutMapping(value = "/update/{id}")
     public void update(@PathVariable(value = "id")Integer id, @RequestBody MenuItem menuItem){
         menuItemService.update(id, menuItem);
     }

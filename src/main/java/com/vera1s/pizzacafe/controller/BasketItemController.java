@@ -38,16 +38,16 @@ public class BasketItemController {
                 .toList();
         return ResponseEntity.ok(basketItemDTOS);
     }
-    @PostMapping(value = "/save")
+    @PostMapping(value = "/save/{id}")
     public void saveBasket(@RequestBody BasketItem basketItem){
         basketItemService.save(basketItem);
     }
-    @DeleteMapping(value = "/delete")
+    @DeleteMapping(value = "/delete/{id}")
     public void deleteById(@PathVariable(value = "id")Integer id){
         basketItemService.deleteById(id);
     }
 
-    @PutMapping(value = "/update")
+    @PutMapping(value = "/update/{id}")
     public void updateBasketById(@PathVariable(value = "id")Integer id, @RequestBody BasketItem basketItem){
         basketItemService.update(id, basketItem);
     }

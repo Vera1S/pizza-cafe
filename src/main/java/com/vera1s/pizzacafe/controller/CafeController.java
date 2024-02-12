@@ -27,15 +27,15 @@ public class CafeController {
         List<Cafe> cafe = cafeService.getAllCafe();
         return ResponseEntity.ok(cafe);
     }
-    @PostMapping(value = "/save")
+    @PostMapping(value = "/save/{id}")
     public void saveCafe(@RequestBody Cafe cafe){
         cafeService.save(cafe);
     }
-    @DeleteMapping(value = "/delete")
+    @DeleteMapping(value = "/delete/{id}")
     public void deleteById(@PathVariable(value = "id")Integer id){
         cafeService.deleteById(id);
     }
-    @PutMapping(value = "/update")
+    @PutMapping(value = "/update/{id}")
     public void updateCafeById(@PathVariable(value = "id")Integer id, @RequestBody Cafe cafe){
         cafeService.update(id, cafe);
     }

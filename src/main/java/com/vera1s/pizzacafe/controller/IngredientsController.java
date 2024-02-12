@@ -27,15 +27,15 @@ public class IngredientsController {
         return ResponseEntity.ok(ingredients);
     }
 
-    @PostMapping(value = "/save")
+    @PostMapping(value = "/save/{id}")
     public void saveIngredients(@RequestBody Ingredients ingredients){
         ingredientsService.save(ingredients);
     }
-    @DeleteMapping(value = "/delete")
+    @DeleteMapping(value = "/delete/{id}")
     public void deleteById(@PathVariable(value = "id")Integer id){
         ingredientsService.deleteById(id);
     }
-    @PutMapping(value = "/update")
+    @PutMapping(value = "/update/{id}")
     public void updateIngredientsById(@PathVariable(value = "id")Integer id, @RequestBody Ingredients ingredients){
         ingredientsService.update(id, ingredients);
     }

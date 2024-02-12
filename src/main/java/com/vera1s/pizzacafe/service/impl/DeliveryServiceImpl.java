@@ -77,8 +77,8 @@ public class DeliveryServiceImpl implements DeliveryService {
         }
         DriverStatus persistDeliveryDriverStatus = persistDelivery.getDriverStatus();
         DriverStatus newDriverStatus = newDelivery.getDriverStatus();
-        if (newDriverStatus == DriverStatus.FAILED && persistDeliveryDriverStatus !=DriverStatus.PENDING
-                && persistDeliveryDriverStatus !=DriverStatus.DISPATCHED){
+        if (newDriverStatus == DriverStatus.FAILED && persistDeliveryDriverStatus != DriverStatus.PENDING
+                && persistDeliveryDriverStatus != DriverStatus.DISPATCHED){
             return DriverStatus.FAILED;
         }
         if (persistDeliveryDriverStatus == DriverStatus.PENDING && newDriverStatus == DriverStatus.DISPATCHED){

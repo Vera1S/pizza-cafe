@@ -28,15 +28,15 @@ public class PizzaController {
         List<Pizza> pizzas = pizzaService.getAllPizzas();
         return ResponseEntity.ok(pizzas);
     }
-    @PostMapping(value = "/save")
+    @PostMapping(value = "/save/{id}")
     public void savePizza(@RequestBody Pizza pizza){
         pizzaService.save(pizza);
     }
-    @DeleteMapping(value = "/delete")
+    @DeleteMapping(value = "/delete/{id}")
     public void deleteById(@PathVariable(value = "id")Integer id){
         pizzaService.deleteById(id);
     }
-    @PutMapping(value = "/update")
+    @PutMapping(value = "/update/{id}")
     public void updatePizzaById(@PathVariable(value = "id")Integer id, @RequestBody Pizza pizza){
         pizzaService.update(id, pizza);
     }

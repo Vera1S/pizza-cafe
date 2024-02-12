@@ -4,6 +4,7 @@ import com.vera1s.pizzacafe.entity.Ingredients;
 import com.vera1s.pizzacafe.entity.Pizza;
 import com.vera1s.pizzacafe.repository.PizzaRepository;
 import com.vera1s.pizzacafe.service.interfaces.PizzaService;
+import com.vera1s.pizzacafe.service.interfaces.PriceMenuService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,7 @@ import java.util.Optional;
 public class PizzaServiceImpl implements PizzaService {
 
     private final PizzaRepository pizzaRepository;
-    private final PriceMenuServiceImpl priceMenuService;
+    private final PriceMenuService priceMenuService;
 
     @Override
     public Pizza getNewPizza(Integer id) {
@@ -52,6 +53,7 @@ public class PizzaServiceImpl implements PizzaService {
             return;
         }
         double price = priceMenuService.calculatePrice(pizza.getSizeItem(), pizza.getMenuItem().getPrice());
+
         pizzaRepository.save(pizza);
     }
 
@@ -68,6 +70,7 @@ public class PizzaServiceImpl implements PizzaService {
         if (persistPizzaOptional.isPresent()) { //если есть
             Pizza persistPizza = persistPizzaOptional.get();
             persistPizza.setNamePizza(pizza.getNamePizza()); //в старую pizza устанавливаем новое имя
+           // persistPizza.setMenuItem(pizza.getMenuItem().getPrice());
             pizzaRepository.save(persistPizza); //пересохраняем старую pizza
         }
     }

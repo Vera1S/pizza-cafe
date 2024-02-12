@@ -39,7 +39,7 @@ public class DeliveryController {
         return ResponseEntity.ok(deliveryDTOS);
     }
 
-    @PostMapping(value = "/save")
+    @PostMapping(value = "/save/{id}")
     public void saveDelivery(@RequestBody Delivery delivery){
         deliveryService.save(delivery);
     }

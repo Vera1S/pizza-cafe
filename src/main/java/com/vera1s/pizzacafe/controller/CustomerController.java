@@ -27,17 +27,17 @@ public class CustomerController {
         List<Customer> customers = customerService.getAllCustomer();
         return ResponseEntity.ok(customers);
     }
-    @PostMapping(value = "/save")
+    @PostMapping(value = "/save/{id}")
     public void saveCustomer(@RequestBody Customer customers){
         customerService.save(customers);
     }
 
-    @DeleteMapping(value = "/delete")
+    @DeleteMapping(value = "/delete/{id}")
     public void deleteById(@PathVariable(value = "id")Integer id){
         customerService.deleteById(id);
     }
 
-    @PutMapping(value = "/update")
+    @PutMapping(value = "/update/{id}")
     public void updateCustomerById(@PathVariable(value = "id")Integer id, @RequestBody Customer customer){
         customerService.update(id, customer);
     }

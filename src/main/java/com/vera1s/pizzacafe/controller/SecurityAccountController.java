@@ -27,15 +27,15 @@ public class SecurityAccountController {
         List<SecurityAccount> securityAccounts = securityAccountService.getAllSecurityAccount();
         return ResponseEntity.ok(securityAccounts);
     }
-    @PostMapping(value = "/save")
+    @PostMapping(value = "/save/{id}")
     public void saveAccount(@RequestBody SecurityAccount securityAccount){
         securityAccountService.save(securityAccount);
     }
-    @DeleteMapping(value = "/delete")
+    @DeleteMapping(value = "/delete/{id}")
     public void deleteById(@PathVariable(value = "id")Integer id){
         securityAccountService.deleteById(id);
     }
-    @PutMapping(value = "/update")
+    @PutMapping(value = "/update/{id}")
     public void updateAccountById(@PathVariable(value = "id")Integer id, @RequestBody SecurityAccount securityAccount){
         securityAccountService.update(id, securityAccount);
     }
