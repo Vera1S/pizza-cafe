@@ -1,15 +1,10 @@
 package com.vera1s.pizzacafe.entity;
 
-import com.vera1s.pizzacafe.entity.enums.CustomerStatus;
-import com.vera1s.pizzacafe.entity.enums.IngredientsForPizza;
-import com.vera1s.pizzacafe.entity.enums.NamePizzaEnum;
-import com.vera1s.pizzacafe.entity.enums.SizeItem;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Time;
 import java.time.LocalTime;
 import java.util.List;
 

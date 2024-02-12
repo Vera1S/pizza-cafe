@@ -1,6 +1,6 @@
 package com.vera1s.pizzacafe.entity.enums;
 
-public enum NamePizzaEnum {
+public enum NamePizza {
     MARGARITA,    //Tomatoes, cheese Томатный соус, моцарелла и орегано
     CHEESE,       //Томатный соус, моцарелла, пармезан, сыр горгонзола, артишоки и орегано.
     OCEAN,         //Томатный соус и морепродукты

@@ -1,6 +1,6 @@
 package com.vera1s.pizzacafe.dto;
 import com.vera1s.pizzacafe.entity.enums.IngredientsForPizza;
-import com.vera1s.pizzacafe.entity.enums.NamePizzaEnum;
+import com.vera1s.pizzacafe.entity.enums.NamePizza;
 import com.vera1s.pizzacafe.entity.enums.SizeItem;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,7 +14,7 @@ import java.util.Set;
 public class PizzaDTO {
 
     @NonNull
-    private NamePizzaEnum namePizzaEnum;
+    private NamePizza namePizza;
 
     @NonNull
     private SizeItem sizeItem;
