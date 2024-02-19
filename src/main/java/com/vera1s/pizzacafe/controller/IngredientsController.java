@@ -27,7 +27,7 @@ public class IngredientsController {
         return ResponseEntity.ok(ingredients);
     }
 
-    @PostMapping(value = "/save/{id}")
+    @PostMapping(value = "/save")
     public void saveIngredients(@RequestBody Ingredients ingredients){
         ingredientsService.save(ingredients);
     }

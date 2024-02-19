@@ -7,13 +7,11 @@ import java.util.List;
 
 public interface PizzaService {
 
-    Pizza getNewPizza(Integer id);
-
     public List<Pizza> getAllPizzas();
 
     Pizza getById(Integer id);
 
-    void save(Pizza pizza);
+    void save(Pizza pizza, Integer cafeId);
 
     void deleteById(Integer id);
 

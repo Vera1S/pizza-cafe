@@ -32,7 +32,10 @@ public class Cafe {
     private String phone;
 
     @Column(name = "time_status")
-    private LocalTime status; //open close two
+    private LocalTime status;    //openStatus;
+
+//    @Column(name = "time_status")
+//    private LocalTime closeStatus;
 
     @OneToMany(mappedBy = "cafe")
     private List<Order> orders;

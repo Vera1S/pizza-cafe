@@ -1,4 +1,4 @@
-package com.vera1s.pizzacafe.service;
+package com.vera1s.pizzacafe;
 
 import com.vera1s.pizzacafe.entity.SecurityAccount;
 import com.vera1s.pizzacafe.repository.SecurityAccountRepository;
@@ -47,18 +47,6 @@ public class WebSecurityConfiguration {
         };
 
         return userDetailsService;
-
-
-
-
-//        UserDetails userDetails =
-//                User.builder()
-//                        .username("Vera")
-//                        .password("Vera")
-//                        .roles("ADMIN")
-//                        .build();
-//
-//        return new InMemoryUserDetailsManager(userDetails);
     }
 
     @Bean

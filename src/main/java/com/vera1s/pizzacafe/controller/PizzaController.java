@@ -28,9 +28,9 @@ public class PizzaController {
         List<Pizza> pizzas = pizzaService.getAllPizzas();
         return ResponseEntity.ok(pizzas);
     }
-    @PostMapping(value = "/save/{id}")
-    public void savePizza(@RequestBody Pizza pizza){
-        pizzaService.save(pizza);
+    @PostMapping(value = "/save/{cafeId}")
+    public void savePizza(@RequestBody Pizza pizza, @PathVariable(value = "cafeId")Integer cafeId){
+        pizzaService.save(pizza, cafeId);
     }
     @DeleteMapping(value = "/delete/{id}")
     public void deleteById(@PathVariable(value = "id")Integer id){

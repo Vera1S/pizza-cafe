@@ -27,7 +27,7 @@ public class SecurityAccountController {
         List<SecurityAccount> securityAccounts = securityAccountService.getAllSecurityAccount();
         return ResponseEntity.ok(securityAccounts);
     }
-    @PostMapping(value = "/save/{id}")
+    @PostMapping(value = "/save")
     public void saveAccount(@RequestBody SecurityAccount securityAccount){
         securityAccountService.save(securityAccount);
     }

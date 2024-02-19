@@ -1,8 +1,12 @@
 package com.vera1s.pizzacafe.service.impl;
 
 import com.vera1s.pizzacafe.entity.Ingredients;
+import com.vera1s.pizzacafe.entity.MenuItem;
 import com.vera1s.pizzacafe.entity.Pizza;
+import com.vera1s.pizzacafe.entity.enums.NamePizza;
 import com.vera1s.pizzacafe.repository.PizzaRepository;
+import com.vera1s.pizzacafe.service.interfaces.IngredientsService;
+import com.vera1s.pizzacafe.service.interfaces.MenuItemService;
 import com.vera1s.pizzacafe.service.interfaces.PizzaService;
 import com.vera1s.pizzacafe.service.interfaces.PriceMenuService;
 import lombok.RequiredArgsConstructor;
@@ -19,16 +23,9 @@ public class PizzaServiceImpl implements PizzaService {
 
     private final PizzaRepository pizzaRepository;
     private final PriceMenuService priceMenuService;
+    private final IngredientsService ingredientsService;
+    private final MenuItemService menuItemService;
 
-    @Override
-    public Pizza getNewPizza(Integer id) {
-        List<Pizza> Pizza = pizzaRepository.findAll();
-
-        if (Pizza.isEmpty()) {
-            throw new RuntimeException("Unable to create new pizza - no existing pizzas found.");
-        }
-        return new Pizza();
-    }
 
     @Override
     public List<Pizza> getAllPizzas() {
@@ -48,12 +45,20 @@ public class PizzaServiceImpl implements PizzaService {
     }
 
     @Override
-    public void save(Pizza pizza) {
+    public void save(Pizza pizza, Integer cafeId) {
         if (pizza == null) {
             return;
         }
-        double price = priceMenuService.calculatePrice(pizza.getSizeItem(), pizza.getMenuItem().getPrice());
+        double price = priceMenuService.calculatePrice(pizza.getSizeItem(), pizza.getIngredients().size());
 
+        MenuItem menuItem = new MenuItem();
+        menuItem.setNamePizza(pizza.getNamePizza());
+        menuItem.setSizeItem(pizza.getSizeItem());
+        menuItem.setPrice(price);
+        pizza.setMenuItem(menuItem);
+
+
+        menuItemService.save(menuItem);
         pizzaRepository.save(pizza);
     }
 
@@ -70,16 +75,8 @@ public class PizzaServiceImpl implements PizzaService {
         if (persistPizzaOptional.isPresent()) { //если есть
             Pizza persistPizza = persistPizzaOptional.get();
             persistPizza.setNamePizza(pizza.getNamePizza()); //в старую pizza устанавливаем новое имя
-           // persistPizza.setMenuItem(pizza.getMenuItem().getPrice());
+            persistPizza.setMenuItem(pizza.getMenuItem());
             pizzaRepository.save(persistPizza); //пересохраняем старую pizza
         }
     }
-//    public List<Ingredients> getIngredientsForPizza(Integer pizzaId) {
-//        Pizza pizza = getById(pizzaId);
-//        if (pizza != null) {
-//            return pizza.getIngredients();
-//        } else {
-//            throw new RuntimeException("Pizza not found");
-//        }
-//    }
 }

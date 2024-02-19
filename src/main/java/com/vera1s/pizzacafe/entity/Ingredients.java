@@ -19,7 +19,6 @@ public class Ingredients {
     @Column(name = "id")
     private Integer id;
 
-
     @Enumerated(EnumType.STRING)
     @Column(name = "ingredients_name")
     private IngredientsForPizza name;
