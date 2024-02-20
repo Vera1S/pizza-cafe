@@ -27,7 +27,7 @@ public class CafeController {
         List<Cafe> cafe = cafeService.getAllCafe();
         return ResponseEntity.ok(cafe);
     }
-    @PostMapping(value = "/save/{id}")
+    @PostMapping(value = "/save")
     public void saveCafe(@RequestBody Cafe cafe){
         cafeService.save(cafe);
     }

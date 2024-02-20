@@ -27,7 +27,7 @@ public class CustomerController {
         List<Customer> customers = customerService.getAllCustomer();
         return ResponseEntity.ok(customers);
     }
-    @PostMapping(value = "/save/{id}")
+    @PostMapping(value = "/save")
     public void saveCustomer(@RequestBody Customer customers){
         customerService.save(customers);
     }

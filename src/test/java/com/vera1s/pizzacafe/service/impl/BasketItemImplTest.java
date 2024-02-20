@@ -39,7 +39,7 @@ class BasketItemImplTest {
         // Добавляем несколько экземпляров пицц в список
         basketItems.add(new BasketItem(1, "apple", 2,
                 SizeItem.MEDIUM, 6.0, null, new Order(), new MenuItem()));
-        basketItems.add(new BasketItem(2, "orenge", 1,
+        basketItems.add(new BasketItem(2, "orange", 1,
                 SizeItem.MEDIUM, 4.0, null, new Order(), new MenuItem()));
     }
     @Test

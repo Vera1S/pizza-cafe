@@ -38,7 +38,7 @@ public class BasketItemController {
                 .toList();
         return ResponseEntity.ok(basketItemDTOS);
     }
-    @PostMapping(value = "/save/{id}")
+    @PostMapping(value = "/save")
     public void saveBasket(@RequestBody BasketItem basketItem){
         basketItemService.save(basketItem);
     }

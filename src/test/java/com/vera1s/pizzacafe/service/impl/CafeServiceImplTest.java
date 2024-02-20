@@ -38,7 +38,7 @@ class CafeServiceImplTest {
 
         // Добавляем несколько экземпляров пицц в список
         cafes.add(new Cafe(1, "Kas", "ff@gmail.com", "address",
-                "phone", LocalTime.of(22, 0), orders, deliveries));
+                "phone", LocalTime.of(23, 59), orders, deliveries));
     }
 
     @Test
@@ -48,17 +48,17 @@ class CafeServiceImplTest {
         when(cafeRepository.findAll()).thenReturn(cafes);
 
         // Запускаем тестируемый метод
-        List<Cafe> returnCafe = cafeServiceImpl.getAllCafe();
+        List<Cafe> returnedCafe = cafeServiceImpl.getAllCafe();
 
         // Проверяем результаты теста
-        assertNotNull(returnCafe);
-        assertEquals(1, returnCafe.size());
+        assertNotNull(returnedCafe);
+        assertEquals(1, returnedCafe.size());
 
-        Cafe returnCafeElement = returnCafe.get(0);
-        assertEquals(1, returnCafeElement.getId());
-        //assertEquals(LocalTime.MIDNIGHT, returnCafeElement.getStatus());
-        //assertEquals(LocalTime.of(22,0), returnCafeElement.getStatus());
-        assertEquals("Kas", returnCafeElement.getName());
-        assertEquals("address", returnCafeElement.getAddress());
+        Cafe returnedCafeElement = returnedCafe.get(0);
+        assertEquals(1, returnedCafeElement.getId());
+        assertEquals(LocalTime.MIDNIGHT, returnedCafeElement.getStatus());
+      // assertEquals(LocalTime.of(23,59), returnedCafeElement.getStatus());
+        assertEquals("Kas", returnedCafeElement.getName());
+        assertEquals("address", returnedCafeElement.getAddress());
     }
 }

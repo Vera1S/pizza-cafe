@@ -28,7 +28,7 @@ public class OrderController {
         return ResponseEntity.ok(orders);
     }
 
-    @PostMapping(value = "/save/{id}")
+    @PostMapping(value = "/save")
     public void saveOrder(@RequestBody Order order){
         orderService.save(order);
     }

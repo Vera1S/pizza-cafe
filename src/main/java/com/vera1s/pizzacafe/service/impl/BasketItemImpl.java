@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * Класс для создания заказа - карзина
+ * Класс для создания заказов - карзина
  */
 
 @Service

@@ -10,7 +10,7 @@ public interface MenuItemService {
 
     MenuItem getById(Integer id);
 
-    List<MenuItem> getAllCafe();
+    List<MenuItem> getAllMenuItem();
 
     void save(MenuItem menuItem);
 

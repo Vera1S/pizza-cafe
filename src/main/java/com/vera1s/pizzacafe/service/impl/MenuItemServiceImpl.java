@@ -27,7 +27,7 @@ public class MenuItemServiceImpl implements MenuItemService {
     }
 
     @Override
-    public List<MenuItem> getAllCafe() {
+    public List<MenuItem> getAllMenuItem() {
         return menuItemRepository.findAll();
     }
 

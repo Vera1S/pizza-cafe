@@ -17,17 +17,17 @@ public class MenuItemController {
     private final MenuItemService menuItemService;
 
     @GetMapping(value = "/id")
-    public MenuItem getPizzaById(@PathVariable(value = "id")Integer id){
+    public MenuItem getMenuItemById(@PathVariable(value = "id")Integer id){
         MenuItem menuItem = menuItemService.getById(id);
         return menuItem;
     }
 
     @GetMapping(value = "/all")
     public ResponseEntity<List<MenuItem>> getAllMenuItem() {
-        List<MenuItem> menuItems = menuItemService.getAllCafe();
+        List<MenuItem> menuItems = menuItemService.getAllMenuItem();
         return ResponseEntity.ok(menuItems);
     }
-    @PostMapping(value = "/save/{id}")
+    @PostMapping(value = "/save")
     public void saveMenuItem(@RequestBody MenuItem menuItem){
         menuItemService.save(menuItem);
     }
