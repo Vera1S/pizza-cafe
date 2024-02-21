@@ -1,6 +1,7 @@
 package com.vera1s.pizzacafe.controller;
 
 
+import com.vera1s.pizzacafe.dto.SecurityAccountDTO;
 import com.vera1s.pizzacafe.entity.SecurityAccount;
 import com.vera1s.pizzacafe.service.interfaces.SecurityAccountService;
 import lombok.RequiredArgsConstructor;
@@ -17,15 +18,21 @@ public class SecurityAccountController {
     private final SecurityAccountService securityAccountService;
 
     @GetMapping(value = "/id")
-    public SecurityAccount getAccountById(@PathVariable(value = "id")Integer id){
+    public SecurityAccountDTO getAccountById(@PathVariable(value = "id")Integer id){
         SecurityAccount securityAccount = securityAccountService.getById(id);
-        return securityAccount;
+        SecurityAccountDTO securityAccountDTO = new SecurityAccountDTO(securityAccount.getId(),
+                securityAccount.getLogin(), securityAccount.getPassword(), securityAccount.getRole());
+        return securityAccountDTO;
     }
 
     @GetMapping(value = "/all")
-    public ResponseEntity<List<SecurityAccount>> getAllAccount() {
+    public ResponseEntity<List<SecurityAccountDTO>> getAllAccount() {
         List<SecurityAccount> securityAccounts = securityAccountService.getAllSecurityAccount();
-        return ResponseEntity.ok(securityAccounts);
+        List<SecurityAccountDTO> securityAccountDTOS = securityAccounts.stream()
+                .map(securityAccount -> new SecurityAccountDTO(securityAccount.getId(), securityAccount.getLogin(),
+                        securityAccount.getPassword(), securityAccount.getRole()))
+                .toList();
+        return ResponseEntity.ok(securityAccountDTOS);
     }
     @PostMapping(value = "/save")
     public void saveAccount(@RequestBody SecurityAccount securityAccount){

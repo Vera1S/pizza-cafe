@@ -18,15 +18,20 @@ public class PizzaController {
     private final PizzaService pizzaService;
 
     @GetMapping(value = "/id")
-    public Pizza getPizzaById(@PathVariable(value = "id")Integer id){
+    public PizzaDTO getPizzaById(@PathVariable(value = "id")Integer id){
         Pizza pizza = pizzaService.getById(id);
-        return pizza;
+        PizzaDTO pizzaDTO = new PizzaDTO(pizza.getId(), pizza.getNamePizza(), pizza.getSizeItem(),
+                pizza.getIngredients());
+        return pizzaDTO;
     }
 
     @GetMapping(value = "/all")
-    public ResponseEntity<List<Pizza>> getAllPizzas() {
+    public ResponseEntity<List<PizzaDTO>> getAllPizzas() {
         List<Pizza> pizzas = pizzaService.getAllPizzas();
-        return ResponseEntity.ok(pizzas);
+        List<PizzaDTO> pizzaDTOS = pizzas.stream()
+                .map(p -> new PizzaDTO(p.getId(), p.getNamePizza(), p.getSizeItem(), p.getIngredients()))
+                .toList();
+        return ResponseEntity.ok(pizzaDTOS);
     }
     @PostMapping(value = "/save/{cafeId}")
     public void savePizza(@RequestBody Pizza pizza, @PathVariable(value = "cafeId")Integer cafeId){

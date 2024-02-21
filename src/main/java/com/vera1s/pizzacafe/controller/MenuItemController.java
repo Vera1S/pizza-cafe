@@ -1,6 +1,7 @@
 package com.vera1s.pizzacafe.controller;
 
 
+import com.vera1s.pizzacafe.dto.MenuItemDTO;
 import com.vera1s.pizzacafe.entity.MenuItem;
 import com.vera1s.pizzacafe.service.interfaces.MenuItemService;
 import lombok.RequiredArgsConstructor;
@@ -17,15 +18,20 @@ public class MenuItemController {
     private final MenuItemService menuItemService;
 
     @GetMapping(value = "/id")
-    public MenuItem getMenuItemById(@PathVariable(value = "id")Integer id){
+    public MenuItemDTO getMenuItemById(@PathVariable(value = "id")Integer id){
         MenuItem menuItem = menuItemService.getById(id);
-        return menuItem;
+        MenuItemDTO menuItemDTO = new MenuItemDTO(menuItem.getId(), menuItem.getNamePizza(), menuItem.getSizeItem(),
+                menuItem.getPrice());
+        return menuItemDTO;
     }
 
     @GetMapping(value = "/all")
-    public ResponseEntity<List<MenuItem>> getAllMenuItem() {
+    public ResponseEntity<List<MenuItemDTO>> getAllMenuItem() {
         List<MenuItem> menuItems = menuItemService.getAllMenuItem();
-        return ResponseEntity.ok(menuItems);
+        List<MenuItemDTO> menuItemDTOS = menuItems.stream()
+                .map(m -> new MenuItemDTO(m.getId(), m.getNamePizza(), m.getSizeItem(), m.getPrice()))
+                .toList();
+        return ResponseEntity.ok(menuItemDTOS);
     }
     @PostMapping(value = "/save")
     public void saveMenuItem(@RequestBody MenuItem menuItem){

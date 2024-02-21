@@ -31,11 +31,12 @@ class SecurityAccountServiceImplTest {
     void setUp() {
         // Создаем список пицц
         securityAccounts = new ArrayList<>();
-        List<Customer> customers = List.of();
+        Customer customer = new Customer();
 
         // Добавляем несколько экземпляров пицц в список
-        securityAccounts.add(new SecurityAccount());
-        //1, "fdkf", "address", "password", "ADMIN", customers
+        securityAccounts.add(new SecurityAccount(1, "Login", "password",
+                "ADMIN", customer));
+
     }
 
     @Test
@@ -52,8 +53,8 @@ class SecurityAccountServiceImplTest {
         assertEquals(1, returnedSecurityAccount.size());
 
         SecurityAccount returnedSecurityAccountElement = returnedSecurityAccount.get(0);
-       // assertEquals(1, returnedSecurityAccountElement.getId());
-        assertEquals(null, returnedSecurityAccountElement.getLogin());
+        assertEquals(1, returnedSecurityAccountElement.getId());
+        assertEquals("Login", returnedSecurityAccountElement.getLogin());
 
     }
 }

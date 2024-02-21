@@ -34,7 +34,8 @@ class MenuItemServiceImplTest {
     void setUp() {
         // Создаем список пицц
         menuItems = new ArrayList<>();
-       // List<Pizza> pizzas = List.of(new Pizza(1, IngredientsForPizza.TOMATOES.name(), SizeItem.MEDIUM, null));
+       // List<Pizza> pizzas = List.of(new Pizza(1, IngredientsForPizza.TOMATOES.name(),
+        // SizeItem.MEDIUM, null));
 
         // Добавляем несколько экземпляров пицц в список
         menuItems.add(new MenuItem(1, "apple", SizeItem.LARGE, 4.3, new Cafe(),

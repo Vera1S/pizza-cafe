@@ -20,15 +20,20 @@ public class DeliveryController {
     private final DeliveryService deliveryService;
 
     @GetMapping(value = "/{id}")
-    public Delivery getDeliveryById(@PathVariable(value = "id")Integer id){
+    public DeliveryDTO getDeliveryById(@PathVariable(value = "id")Integer id){
         Delivery delivery = deliveryService.getById(id);
-        return delivery;
+        DeliveryDTO deliveryDTO = new DeliveryDTO(delivery.getId(), delivery.getDriverStatus(),
+                delivery.getCustomers().getAddress());
+        return deliveryDTO;
     }
 
     @GetMapping(value = "/all")
-    public ResponseEntity<List<Delivery>> getAllDelivery() {
+    public ResponseEntity<List<DeliveryDTO>> getAllDelivery() {
         List<Delivery> delivery = deliveryService.getAllDelivery();
-        return ResponseEntity.ok(delivery);
+        List<DeliveryDTO> deliveryDTOS = delivery.stream()
+                .map(del -> new DeliveryDTO(del.getId(), del.getDriverStatus(), del.getCustomers().getAddress()))
+                .toList();
+        return ResponseEntity.ok(deliveryDTOS);
     }
     @PostMapping(value = "/all-deliveries-by-customer")
     public ResponseEntity<Collection<DeliveryDTO>> getByCustomers(@RequestBody Customer customer){

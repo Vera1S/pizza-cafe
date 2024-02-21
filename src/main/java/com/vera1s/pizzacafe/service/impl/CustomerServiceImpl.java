@@ -8,6 +8,7 @@ import com.vera1s.pizzacafe.service.interfaces.CustomerService;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,23 +20,14 @@ public class CustomerServiceImpl implements CustomerService {
 
     private final CustomerRepository customerRepository;
 
-
-//    @Override
-//    public Customer getNewCustomer(Integer id) {
-//        List<Customer> Customer = customerRepository.findAll();
-//
-//        if (Customer.isEmpty()) {
-//            throw new RuntimeException();
-//        }
-//        return null;
-//    }
-
     @Override
+    @Transactional
     public List<Customer> getAllCustomer() {
         return null;
     }
 
     @Override
+    @Transactional
     public Customer getById(Integer id) {
         Optional<Customer> optional = customerRepository.findById(id);
 
@@ -47,12 +39,14 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    @Transactional
     public void save(Customer customer) {
 
     }
 
 
     @Override
+    @Transactional
     public void deleteById(Integer id) {
         if (id != null && customerRepository.existsById(id)) {
             customerRepository.deleteById(id);
@@ -61,6 +55,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    @Transactional
     public void update(Integer id, Customer customer) {
         Optional<Customer> persistCustomerOptional = customerRepository.findById(id);
         if (persistCustomerOptional.isPresent()) { //если есть

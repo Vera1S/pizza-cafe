@@ -20,6 +20,7 @@ import java.util.Optional;
 import static com.vera1s.pizzacafe.entity.enums.NamePizza.CHEESE;
 import static com.vera1s.pizzacafe.entity.enums.NamePizza.MARGARITA;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -98,4 +99,6 @@ class PizzaServiceImplTest {
         // Проверяем результаты теста
         assertEquals(0, returnedPizzasId.getId());
     }
+
+
 }

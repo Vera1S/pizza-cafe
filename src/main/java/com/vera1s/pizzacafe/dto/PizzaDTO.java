@@ -1,25 +1,29 @@
 package com.vera1s.pizzacafe.dto;
-import com.vera1s.pizzacafe.entity.enums.IngredientsForPizza;
+
+import com.vera1s.pizzacafe.entity.Ingredients;
+
 import com.vera1s.pizzacafe.entity.enums.NamePizza;
 import com.vera1s.pizzacafe.entity.enums.SizeItem;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import java.util.List;
 
-import java.util.Set;
+
 @Data
 @NoArgsConstructor
 @RequiredArgsConstructor
+@AllArgsConstructor
 public class PizzaDTO {
 
-    @NonNull
-    private NamePizza namePizza;
+    private Integer id;
 
-    @NonNull
+    private String namePizza;
+
+
     private SizeItem sizeItem;
 
-    @NonNull
-    private Set<IngredientsForPizza> ingredients;
+    private List<Ingredients> ingredients;
 
 }

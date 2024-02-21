@@ -13,6 +13,7 @@ import com.vera1s.pizzacafe.service.interfaces.OrderService;
 import com.vera1s.pizzacafe.service.interfaces.PizzaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
 import java.util.List;
@@ -24,21 +25,24 @@ public class OrderServiceImpl implements OrderService {
 
     private final OrderRepository orderRepository;
     private final CustomerService customerService;
-    private final PizzaService pizzaService;
+
 
 
     @Override
+    @Transactional
     public Order getById(Integer id) {
         Optional<Order> optional = orderRepository.findById(id);
         return orderRepository.findById(id).orElse(null);
     }
 
     @Override
+    @Transactional
     public List<Order> getAllOrder() {
         return orderRepository.findAll();
     }
 
     @Override
+    @Transactional
     public void save(Order order) {
         if (order == null) {
             return;
@@ -47,6 +51,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    @Transactional
     public void deleteById(Integer id) {
         if (id != null && orderRepository.existsById(id)) {
             orderRepository.deleteById(id);
@@ -54,6 +59,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    @Transactional
     public void update(Integer id, Order order) {
         Optional<Order> persistOrderOptional = orderRepository.findById(id);
         if (persistOrderOptional.isPresent()) { //если есть
@@ -62,7 +68,7 @@ public class OrderServiceImpl implements OrderService {
             orderRepository.save(persistOrder); //пересохраняем старое menuItem
         }
     }
-
+    @Transactional
     public void formOrder(Integer customerId) {
 
         Customer customer = customerService.getById(customerId);

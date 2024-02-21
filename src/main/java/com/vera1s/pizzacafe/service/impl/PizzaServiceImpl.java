@@ -1,17 +1,16 @@
 package com.vera1s.pizzacafe.service.impl;
 
-import com.vera1s.pizzacafe.entity.Ingredients;
+import com.vera1s.pizzacafe.entity.Cafe;
+
 import com.vera1s.pizzacafe.entity.MenuItem;
 import com.vera1s.pizzacafe.entity.Pizza;
-import com.vera1s.pizzacafe.entity.enums.NamePizza;
+
 import com.vera1s.pizzacafe.repository.PizzaRepository;
-import com.vera1s.pizzacafe.service.interfaces.IngredientsService;
-import com.vera1s.pizzacafe.service.interfaces.MenuItemService;
-import com.vera1s.pizzacafe.service.interfaces.PizzaService;
-import com.vera1s.pizzacafe.service.interfaces.PriceMenuService;
+import com.vera1s.pizzacafe.service.interfaces.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -23,17 +22,19 @@ public class PizzaServiceImpl implements PizzaService {
 
     private final PizzaRepository pizzaRepository;
     private final PriceMenuService priceMenuService;
-    private final IngredientsService ingredientsService;
     private final MenuItemService menuItemService;
+    private final CafeService cafeService;
 
 
     @Override
+    @Transactional
     public List<Pizza> getAllPizzas() {
         return pizzaRepository.findAll();
     }
 
 
     @Override
+    @Transactional
     public Pizza getById(Integer id) {
         Optional<Pizza> optional = pizzaRepository.findById(id);
 
@@ -45,6 +46,7 @@ public class PizzaServiceImpl implements PizzaService {
     }
 
     @Override
+    @Transactional
     public void save(Pizza pizza, Integer cafeId) {
         if (pizza == null) {
             return;
@@ -56,13 +58,16 @@ public class PizzaServiceImpl implements PizzaService {
         menuItem.setSizeItem(pizza.getSizeItem());
         menuItem.setPrice(price);
         pizza.setMenuItem(menuItem);
-
+        Cafe cafe = cafeService.getById(cafeId);
+        menuItem.setCafe(cafe);
 
         menuItemService.save(menuItem);
         pizzaRepository.save(pizza);
+        cafeService.save(cafe);
     }
 
     @Override
+    @Transactional
     public void deleteById(Integer id) {
         if (id != null && pizzaRepository.existsById(id)) {    //если id не равно 0 и существует по идентификатору
             pizzaRepository.deleteById(id);
@@ -70,6 +75,7 @@ public class PizzaServiceImpl implements PizzaService {
     }
 
     @Override
+    @Transactional
     public void update(Integer id, Pizza pizza) {
         Optional<Pizza> persistPizzaOptional = pizzaRepository.findById(id);
         if (persistPizzaOptional.isPresent()) { //если есть

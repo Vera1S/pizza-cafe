@@ -1,6 +1,7 @@
 package com.vera1s.pizzacafe.controller;
 
 
+import com.vera1s.pizzacafe.dto.IngredientsDTO;
 import com.vera1s.pizzacafe.entity.Ingredients;
 import com.vera1s.pizzacafe.service.interfaces.IngredientsService;
 import lombok.RequiredArgsConstructor;
@@ -17,14 +18,18 @@ public class IngredientsController {
     private final IngredientsService ingredientsService;
 
     @GetMapping(value = "/id")
-    public Ingredients getIngredientsById(@PathVariable(value = "id")Integer id){
+    public IngredientsDTO getIngredientsById(@PathVariable(value = "id")Integer id){
         Ingredients ingredients = ingredientsService.getById(id);
-        return ingredients;
+        IngredientsDTO ingredientsDTO = new IngredientsDTO(ingredients.getId(), ingredients.getName());
+        return ingredientsDTO;
     }
     @GetMapping(value = "/all")
-    public ResponseEntity<List<Ingredients>>getAllIngredients(){
+    public ResponseEntity<List<IngredientsDTO>>getAllIngredients(){
         List<Ingredients> ingredients = ingredientsService.getAllIngredients();
-        return ResponseEntity.ok(ingredients);
+        List<IngredientsDTO> ingredientsDTOS = ingredients.stream()
+                .map(i -> new IngredientsDTO(i.getId(), i.getName()))
+                .toList();
+        return ResponseEntity.ok(ingredientsDTOS);
     }
 
     @PostMapping(value = "/save")

@@ -1,12 +1,14 @@
 package com.vera1s.pizzacafe.controller;
 
 
+import com.vera1s.pizzacafe.dto.CafeDTO;
 import com.vera1s.pizzacafe.entity.Cafe;
 import com.vera1s.pizzacafe.service.interfaces.CafeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -17,15 +19,21 @@ public class CafeController {
     private final CafeService cafeService;
 
     @GetMapping(value = "/id")
-    public Cafe getCafeById(@PathVariable(value = "id")Integer id){
+    public CafeDTO getCafeById(@PathVariable(value = "id")Integer id){
         Cafe cafe = cafeService.getById(id);
-        return cafe;
+        CafeDTO cafeDTO = new CafeDTO(cafe.getId(), cafe.getName(), cafe.getEmail(), cafe.getAddress(),
+                cafe.getPhone(), cafe.getStatus());
+        return cafeDTO;
     }
 
     @GetMapping(value = "/all")
-    public ResponseEntity<List<Cafe>> getAllCafe() {
+    public ResponseEntity<List<CafeDTO>> getAllCafe() {
         List<Cafe> cafe = cafeService.getAllCafe();
-        return ResponseEntity.ok(cafe);
+        List<CafeDTO> cafeDTOS = cafe.stream()
+                .map(c -> new CafeDTO(c.getId(), c.getName(), c.getEmail(), c.getAddress(),
+                        c.getPhone(), c.getStatus()))
+                .toList();
+        return ResponseEntity.ok(cafeDTOS);
     }
     @PostMapping(value = "/save")
     public void saveCafe(@RequestBody Cafe cafe){

@@ -20,15 +20,21 @@ public class BasketItemController {
     private final BasketItemService basketItemService;
 
     @GetMapping(value = "/id")
-    public BasketItem getById(@PathVariable(value = "id")Integer id){
+    public BasketItemDTO getById(@PathVariable(value = "id")Integer id){
         BasketItem basketItems = basketItemService.getById(id);
-        return basketItems;
+        BasketItemDTO basketItemDTO = new BasketItemDTO(basketItems.getId(), basketItems.getNameDishes(),
+                basketItems.getQuantity(), basketItems.getSizeItem(), basketItems.getPrice());
+        return basketItemDTO;
     }
 
     @GetMapping(value = "/all")
-    public ResponseEntity<List<BasketItem>> getAllBasket() {
+    public ResponseEntity<Collection<BasketItemDTO>> getAllBasket() {
         List<BasketItem> basket = basketItemService.getAllBasketItem();
-        return ResponseEntity.ok(basket);
+        Collection<BasketItemDTO> basketItemDTOS = basket.stream()
+                .map(i -> new BasketItemDTO(i.getId(), i.getNameDishes(), i.getQuantity(), i.getSizeItem(),
+                        i.getPrice()))
+                .toList();
+        return ResponseEntity.ok(basketItemDTOS);
     }
     @PostMapping(value = "/all-items-by-customers")
     public ResponseEntity<Collection<BasketItemDTO>> getByCustomers(@RequestBody Customer customer){

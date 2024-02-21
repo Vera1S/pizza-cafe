@@ -1,6 +1,7 @@
 package com.vera1s.pizzacafe.controller;
 
 
+import com.vera1s.pizzacafe.dto.CustomerDTO;
 import com.vera1s.pizzacafe.entity.Customer;
 import com.vera1s.pizzacafe.service.interfaces.CustomerService;
 import lombok.RequiredArgsConstructor;
@@ -17,15 +18,21 @@ public class CustomerController {
     private final CustomerService customerService;
 
     @GetMapping(value = "/id")
-    public Customer getPizzaById(@PathVariable(value = "id")Integer id){
+    public CustomerDTO getPizzaById(@PathVariable(value = "id")Integer id){
         Customer customers = customerService.getById(id);
-        return customers;
+        CustomerDTO customerDTO = new CustomerDTO(customers.getId(), customers.getName(), customers.getEmail(),
+                customers.getAddress(), customers.getPhone(), customers.getStatus());
+        return customerDTO;
     }
 
     @GetMapping(value = "/all")
-    public ResponseEntity<List<Customer>> getAllCustomer() {
+    public ResponseEntity<List<CustomerDTO>> getAllCustomer() {
         List<Customer> customers = customerService.getAllCustomer();
-        return ResponseEntity.ok(customers);
+        List<CustomerDTO> customerDTOS = customers.stream()
+                .map(customer -> new CustomerDTO(customer.getId(), customer.getName(), customer.getEmail(),
+                        customer.getAddress(), customer.getPhone(), customer.getStatus()))
+                .toList();
+        return ResponseEntity.ok(customerDTOS);
     }
     @PostMapping(value = "/save")
     public void saveCustomer(@RequestBody Customer customers){

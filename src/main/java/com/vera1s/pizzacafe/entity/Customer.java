@@ -1,6 +1,7 @@
 package com.vera1s.pizzacafe.entity;
 
 import com.vera1s.pizzacafe.entity.enums.CustomerStatus;
+import com.vera1s.pizzacafe.entity.enums.DriverStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

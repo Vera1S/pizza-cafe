@@ -6,6 +6,7 @@ import com.vera1s.pizzacafe.repository.IngredientsRepository;
 import com.vera1s.pizzacafe.service.interfaces.IngredientsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +20,7 @@ public class IngredientsServiceImpl implements IngredientsService {
 
 
     @Override
+    @Transactional
     public Ingredients getById(Integer id) {
         Optional<Ingredients> optional = ingredientsRepository.findById(id);
 
@@ -30,11 +32,13 @@ public class IngredientsServiceImpl implements IngredientsService {
     }
 
     @Override
+    @Transactional
     public List<Ingredients> getAllIngredients() {
         return ingredientsRepository.findAll();
     }
 
     @Override
+    @Transactional
     public void save(Ingredients ingredients) {
         if (ingredients == null){
             return;
@@ -43,12 +47,14 @@ public class IngredientsServiceImpl implements IngredientsService {
     }
 
     @Override
+    @Transactional
     public void deleteById(Integer id) {
         if (id != null && ingredientsRepository.existsById(id)) {    //если id не равно 0 и существует по идентификатору
             ingredientsRepository.deleteById(id);
         }
     }
     @Override
+    @Transactional
     public void update(Integer id, Ingredients ingredients) {
         Optional<Ingredients> persistIngredientsOptional = ingredientsRepository.findById(id);
         if (persistIngredientsOptional.isPresent()) { //если есть

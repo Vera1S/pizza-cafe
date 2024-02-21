@@ -5,6 +5,7 @@ import com.vera1s.pizzacafe.repository.CafeRepository;
 import com.vera1s.pizzacafe.service.interfaces.CafeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,6 +15,7 @@ public class CafeServiceImpl implements CafeService {
 
 private final CafeRepository cafeRepository;
     @Override
+    @Transactional
     public Cafe getById(Integer id) {
         Optional<Cafe> optional = cafeRepository.findById(id);
         if (optional.isPresent()) {
@@ -24,11 +26,13 @@ private final CafeRepository cafeRepository;
     }
 
     @Override
+    @Transactional
     public List<Cafe> getAllCafe() {
         return cafeRepository.findAll();
     }
 
     @Override
+    @Transactional
     public void save(Cafe cafe) {
         if (cafe == null){
             return;
@@ -37,6 +41,7 @@ private final CafeRepository cafeRepository;
     }
 
     @Override
+    @Transactional
     public void deleteById(Integer id) {
         if (id != null && cafeRepository.existsById(id)){  //если id не равно 0 и существует по идентификатору
             cafeRepository.deleteById(id);
@@ -44,6 +49,7 @@ private final CafeRepository cafeRepository;
     }
 
     @Override
+    @Transactional
     public void update(Integer id, Cafe cafe) {
         Optional<Cafe> persistCafeOptional = cafeRepository.findById(id);
         if (persistCafeOptional.isPresent()) { //если есть

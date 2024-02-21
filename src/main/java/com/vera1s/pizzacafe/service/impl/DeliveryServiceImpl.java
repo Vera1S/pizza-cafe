@@ -10,6 +10,7 @@ import com.vera1s.pizzacafe.service.interfaces.DeliveryService;
 import com.vera1s.pizzacafe.service.interfaces.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
 import java.util.List;
@@ -20,10 +21,10 @@ import java.util.Optional;
 public class DeliveryServiceImpl implements DeliveryService {
 
     private final DeliveryRepository deliveryRepository;
-    private final CustomerService customerService;
-    private final OrderService orderService;
+
 
     @Override
+    @Transactional
     public Delivery getById(Integer id) {
         Optional<Delivery> optional = deliveryRepository.findById(id);
         if (optional.isPresent()) {
@@ -34,16 +35,19 @@ public class DeliveryServiceImpl implements DeliveryService {
     }
 
     @Override
+    @Transactional
     public List<Delivery> getAllDelivery() {
         return deliveryRepository.findAll();
     }
 
     @Override
+    @Transactional
     public Collection<Delivery> getAllByCustomer(Customer customer) {
         return deliveryRepository.findAllByCustomers(customer);
     }
 
     @Override
+    @Transactional
     public void save(Delivery delivery) {
         if (delivery == null) {
             return;
@@ -52,6 +56,7 @@ public class DeliveryServiceImpl implements DeliveryService {
     }
 
     @Override
+    @Transactional
     public void deleteById(Integer id) {
         if (id != null && deliveryRepository.existsById(id)){
             deliveryRepository.deleteById(id);
@@ -59,6 +64,7 @@ public class DeliveryServiceImpl implements DeliveryService {
     }
 
     @Override
+    @Transactional
     public void update(Integer id, Delivery delivery) {
         Optional<Delivery> persistDeliveryOptional = deliveryRepository.findById(id);
         if (persistDeliveryOptional.isPresent()) { //если есть
@@ -71,6 +77,7 @@ public class DeliveryServiceImpl implements DeliveryService {
             deliveryRepository.save(persistDelivery); //пересохраняем старую доставку
         }
     }
+
     private DriverStatus calculateStatus(Delivery persistDelivery, Delivery newDelivery){
         if (persistDelivery == null){
             return DriverStatus.ERROR;
