@@ -25,7 +25,8 @@ public class WebSecurityConfiguration {
                 .csrf(csrf -> csrf.disable())
                 .cors(cors -> cors.disable())
                 .authorizeHttpRequests((requests) -> {
-                    requests.requestMatchers(HttpMethod.GET, "/pizza/{id}").hasRole("ADMIN");
+                    requests.requestMatchers(HttpMethod.DELETE, "/pizza/delete/{id}").hasRole("ADMIN");
+                    requests.requestMatchers(HttpMethod.GET, "/pizza/{id}").hasAnyRole("USER", "ADMIN");
                     requests.anyRequest().permitAll();
                 })
                 .formLogin(formLogin -> formLogin.disable())
@@ -52,8 +53,7 @@ public class WebSecurityConfiguration {
     @Bean
     public PasswordEncoder passwordEncoder() {
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-        System.out.println(bCryptPasswordEncoder.encode("qwerty")); // просмотр зашифрованных пароль
-        System.out.println(bCryptPasswordEncoder.encode("Vera"));
+
         return bCryptPasswordEncoder;
     }
 

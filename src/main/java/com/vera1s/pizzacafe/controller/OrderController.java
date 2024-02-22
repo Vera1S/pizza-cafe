@@ -45,8 +45,9 @@ public class OrderController {
     public void updateOrderById(@PathVariable(value = "id")Integer id, @RequestBody Order order){
         orderService.update(id, order);
     }
-    @PostMapping(value = "/form-order/{id}")
-    public void formOrderById(@PathVariable(value = "id")Integer id){
-        orderService.formOrder(id);
+    @PostMapping(value = "/form-order/{id}/{cafeId}")
+    public void formOrderById(@PathVariable(value = "id")Integer id,
+                              @PathVariable(value = "cafeId")Integer cafeId){
+        orderService.formOrder(id, cafeId);
     }
 }

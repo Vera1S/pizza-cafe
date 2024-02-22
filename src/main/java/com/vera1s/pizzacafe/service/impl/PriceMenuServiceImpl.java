@@ -10,6 +10,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+/**
+ * Класс для подсчёта стоимости заказов
+ */
 @Service
 public class PriceMenuServiceImpl implements PriceMenuService {
 

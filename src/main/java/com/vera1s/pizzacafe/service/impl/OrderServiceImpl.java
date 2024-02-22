@@ -1,16 +1,11 @@
 package com.vera1s.pizzacafe.service.impl;
 
-import com.vera1s.pizzacafe.entity.BasketItem;
+import com.vera1s.pizzacafe.entity.*;
 
-import com.vera1s.pizzacafe.entity.Customer;
-import com.vera1s.pizzacafe.entity.Order;
-import com.vera1s.pizzacafe.entity.Pizza;
 import com.vera1s.pizzacafe.repository.CustomerRepository;
 import com.vera1s.pizzacafe.repository.OrderRepository;
 import com.vera1s.pizzacafe.repository.PizzaRepository;
-import com.vera1s.pizzacafe.service.interfaces.CustomerService;
-import com.vera1s.pizzacafe.service.interfaces.OrderService;
-import com.vera1s.pizzacafe.service.interfaces.PizzaService;
+import com.vera1s.pizzacafe.service.interfaces.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,12 +14,17 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Класс для создания заказов, в котором хранится бизнес логика о заказах
+ */
 @Service
 @RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
 
     private final OrderRepository orderRepository;
     private final CustomerService customerService;
+    private final CafeService cafeService;
+    private final BasketItemService basketItemService;
 
 
 
@@ -32,7 +32,7 @@ public class OrderServiceImpl implements OrderService {
     @Transactional
     public Order getById(Integer id) {
         Optional<Order> optional = orderRepository.findById(id);
-        return orderRepository.findById(id).orElse(null);
+        return optional.orElse(null);
     }
 
     @Override
@@ -69,7 +69,7 @@ public class OrderServiceImpl implements OrderService {
         }
     }
     @Transactional
-    public void formOrder(Integer customerId) {
+    public void formOrder(Integer customerId, Integer cafeId) {
 
         Customer customer = customerService.getById(customerId);
         Collection<BasketItem> basketAllItems = customer.getBasketItem(); // все товары у клиента покажет
@@ -78,7 +78,15 @@ public class OrderServiceImpl implements OrderService {
             cost = cost + item.getPrice() * item.getQuantity();
         }
         Order order = new Order(cost, customer);
+
+        Cafe cafe = cafeService.getById(cafeId);
+        order.setCafe(cafe);
         orderRepository.save(order); //сохранить заказ в 75 строке
+
+        for (BasketItem item : basketAllItems) {
+            item.setOrder(order);
+            basketItemService.save(item);
+        }
     }
 
 

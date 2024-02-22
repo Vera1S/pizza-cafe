@@ -8,6 +8,14 @@ import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+/**
+ * Класс CustomerDTO служит для хранения и передачи данных о клиентах между
+ * различными классами данного приложения.
+ *
+ * Объекты этого класса используются для передачи информации о клиентах между
+ * микросервисами, базами данных, пользовательским интерфейсом и другими
+ * компонентами системы.
+ */
 @Data
 @AllArgsConstructor
 public class CustomerDTO {

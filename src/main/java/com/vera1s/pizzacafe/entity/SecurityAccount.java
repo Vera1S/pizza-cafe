@@ -20,6 +20,7 @@ import java.util.Set;
 public class SecurityAccount implements UserDetails {
 
     @Id //поле уникальности + pk
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id") //именование столбца в бд
     private Integer id;
 

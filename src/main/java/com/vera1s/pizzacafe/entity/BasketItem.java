@@ -14,6 +14,7 @@ import lombok.NoArgsConstructor;
 public class BasketItem {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 

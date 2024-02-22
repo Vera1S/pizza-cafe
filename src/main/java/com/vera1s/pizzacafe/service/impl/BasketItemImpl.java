@@ -4,7 +4,6 @@ import com.vera1s.pizzacafe.entity.BasketItem;
 import com.vera1s.pizzacafe.entity.Customer;
 import com.vera1s.pizzacafe.repository.BasketItemRepository;
 import com.vera1s.pizzacafe.service.interfaces.BasketItemService;
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * Класс для создания заказов - карзина
+ * Класс для создания карзины
  */
 
 @Service
@@ -75,7 +74,7 @@ public class BasketItemImpl implements BasketItemService {
             persistBasketItem.setSizeItem(basketItem.getSizeItem());
             persistBasketItem.setId(basketItem.getId());
             persistBasketItem.setOrder(basketItem.getOrder());
-            //persistBasketItem.setCustomers(basketItem.getCustomers());
+            persistBasketItem.setCustomers(basketItem.getCustomers());
             persistBasketItem.setPrice(basketItem.getPrice());
             persistBasketItem.setQuantity(basketItem.getQuantity());
             basketItemRepository.save(persistBasketItem); //пересохраняем старый BasketItem

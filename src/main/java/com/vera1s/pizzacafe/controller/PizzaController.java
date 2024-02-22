@@ -17,9 +17,12 @@ public class PizzaController {
 
     private final PizzaService pizzaService;
 
-    @GetMapping(value = "/id")
+    @GetMapping(value = "/{id}")
     public PizzaDTO getPizzaById(@PathVariable(value = "id")Integer id){
         Pizza pizza = pizzaService.getById(id);
+        if (pizza == null){
+            return null;
+        }
         PizzaDTO pizzaDTO = new PizzaDTO(pizza.getId(), pizza.getNamePizza(), pizza.getSizeItem(),
                 pizza.getIngredients());
         return pizzaDTO;

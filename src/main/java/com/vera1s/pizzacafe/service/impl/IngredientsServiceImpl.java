@@ -27,7 +27,7 @@ public class IngredientsServiceImpl implements IngredientsService {
         if (optional.isPresent()) {
             return optional.get();
         } else {
-            return null; //return ingredientsRepository.findById(id).orElse(null);
+            return null;
         }
     }
 
