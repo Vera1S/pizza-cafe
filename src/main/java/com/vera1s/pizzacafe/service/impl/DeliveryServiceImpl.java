@@ -69,7 +69,6 @@ public class DeliveryServiceImpl implements DeliveryService {
         Optional<Delivery> persistDeliveryOptional = deliveryRepository.findById(id);
         if (persistDeliveryOptional.isPresent()) { //если есть
             Delivery persistDelivery = persistDeliveryOptional.get();//покажи
-            persistDelivery.setId(delivery.getId()); //в старый BasketItem устанавливаем новое имя
             persistDelivery.setCustomers(delivery.getCustomers());
             DriverStatus calculateStated = calculateStatus(persistDelivery, delivery);
             persistDelivery.setDriverStatus(calculateStated);

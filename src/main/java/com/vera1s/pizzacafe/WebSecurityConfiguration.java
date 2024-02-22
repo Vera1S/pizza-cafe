@@ -25,7 +25,7 @@ public class WebSecurityConfiguration {
                 .csrf(csrf -> csrf.disable())
                 .cors(cors -> cors.disable())
                 .authorizeHttpRequests((requests) -> {
-                    requests.requestMatchers(HttpMethod.DELETE, "/pizza/delete/{id}").hasRole("ADMIN");
+                    requests.requestMatchers(HttpMethod.DELETE, "/**").hasRole("ADMIN");
                     requests.requestMatchers(HttpMethod.GET, "/pizza/{id}").hasAnyRole("USER", "ADMIN");
                     requests.anyRequest().permitAll();
                 })

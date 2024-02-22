@@ -34,5 +34,5 @@ public class Delivery {
     @ManyToOne
     private Cafe cafe;
 }
-//дата доставки
+
 

@@ -33,7 +33,7 @@ public class Order {
     @OneToMany(mappedBy = "order")
     private Collection<BasketItem> basketItem;
 
-    @OneToOne
+    @OneToOne(mappedBy = "order")
     private Delivery deliveries;
 
     public Order(double price, Customer customers) {
@@ -41,4 +41,4 @@ public class Order {
         this.customers = customers;
     }
 }
-// дата создания заказа
+
